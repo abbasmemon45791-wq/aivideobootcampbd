@@ -679,7 +679,7 @@ export default function HomePage() {
 
               <div className="mt-5 flex flex-col sm:flex-row sm:items-baseline gap-2">
                 <div className="font-['Sora'] text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-                  Rs. {PRICE.toLocaleString()}
+                  ৳{PRICE.toLocaleString()}
                 </div>
                 <div className="text-sm font-semibold text-slate-500">
                   One-time payment · No hidden fees · Lifetime access
@@ -694,7 +694,7 @@ export default function HomePage() {
                 href="/enroll"
                 className="btn-premium mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white"
               >
-                Enroll Now — Rs. {PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+                Enroll Now — ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
               </Link>
 
               <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-500">
