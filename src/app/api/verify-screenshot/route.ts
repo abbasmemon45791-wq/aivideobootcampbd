@@ -6,10 +6,12 @@ import type { VerificationResult } from '@/types'
 
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!)
 
-// Your bKash account number for Bangladesh
+// Your bKash account number and title for Bangladesh
 const VALID_RECIPIENT_NUMBERS = [
   process.env.NEXT_PUBLIC_BKASH_NUMBER ?? '01896195441',
 ].filter(Boolean)
+
+const ACCOUNT_NAME = (process.env.NEXT_PUBLIC_BKASH_ACCOUNT_NAME ?? 'The Patchee BD').toLowerCase()
 
 const COURSE_PRICE = parseInt(process.env.COURSE_PRICE ?? '1499')
 const PRICE_TOLERANCE_LOW  = COURSE_PRICE - 150   // e.g. 1349
@@ -42,21 +44,21 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    // ── Layer 2: Gemini Flash Vision AI Verification ──────────────────────
+    // ── Layer 2: Ultra-Fast Gemini Flash Lite Vision AI ───────────────────
     const prompt = `You are a payment verification system for a Bangladeshi online course.
 Analyze this payment screenshot and extract the following information as JSON.
 
 RULES:
-- Look for Bangladeshi mobile financial service apps: bKash, Nagad, Rocket (Dutch-Bangla Mobile Banking), Upay, or any Bangladeshi bank app
-- bKash is the primary expected method — it has a bright pink/red app interface with white text
+- Expected method: bKash (bright pink/red app interface with white text). Also accept Nagad, Rocket, or Bangladeshi bank apps.
+- Expected recipient account: ${VALID_RECIPIENT_NUMBERS.join(' or ')} (Account name: "The Patchee BD" or "Patchee")
 - Identify the direction: was money SENT or RECEIVED by the screenshot owner
-- Extract the recipient bKash/mobile number (the TO field — should be an 11-digit Bangladeshi mobile number starting with 01)
+- Extract the recipient bKash/mobile number (the TO field) or recipient account name
 - Extract the exact amount transferred in BDT (Bangladeshi Taka, ৳)
 - Extract the Transaction ID (TrxID) — bKash uses alphanumeric IDs like "ABP5G03JDY"
 - Extract the timestamp of the transaction
-- Determine if this is a genuine payment receipt. You MUST rigorously check for signs of manipulation, photo editing, text-overlay, AI generation, or if it is a screenshot of a screenshot. If it looks fake, tampered with, or AI generated, set valid to false and provide a reason.
+- Determine if this is a genuine payment receipt. Check for signs of manipulation, photo editing, text-overlay, AI generation. If it looks fake or tampered with, set valid to false and provide a reason.
 
-Return ONLY valid JSON, no markdown, no explanation:
+Return ONLY valid JSON matching this schema:
 {
   "valid": boolean,
   "platform": "bkash" | "nagad" | "rocket" | "bank_transfer" | "unknown",
@@ -72,21 +74,26 @@ Return ONLY valid JSON, no markdown, no explanation:
 
 Submitted at local time: ${localTime}`
 
-    const FALLBACK_MODELS = [
-      'gemini-3.7-flash',
-      'gemini-3.6-flash',
-      'gemini-3.5-flash',
+    // Ultra-fast lightweight vision models first for sub-second verification
+    const FAST_MODELS = [
       'gemini-3.1-flash-lite',
-      'gemini-2.5-flash',
-      'gemini-flash-latest'
+      'gemini-3.5-flash-lite',
+      'gemini-3.6-flash',
+      'gemini-3.7-flash',
     ]
 
-    let result;
-    let lastError;
+    let result
+    let lastError
 
-    for (const modelName of FALLBACK_MODELS) {
+    for (const modelName of FAST_MODELS) {
       try {
-        const model = genAI.getGenerativeModel({ model: modelName })
+        const model = genAI.getGenerativeModel({
+          model: modelName,
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.1,
+          }
+        })
         result = await model.generateContent([
           prompt,
           { inlineData: { mimeType: contentType, data: fileBase64 } },
@@ -122,13 +129,14 @@ Submitted at local time: ${localTime}`
       validationErrors.push('This screenshot shows money being received, not sent.')
     }
 
-    // Recipient number must match your bKash account
+    // Recipient number or account name matching
     const recipientNormalized = aiResult.recipient_number?.replace(/\s|-/g, '') ?? ''
     const recipientValid = VALID_RECIPIENT_NUMBERS.some(n =>
       recipientNormalized.includes(n.replace(/\s|-/g, ''))
-    )
+    ) || (aiResult.recipient_number && aiResult.recipient_number.toLowerCase().includes('patchee'))
+
     if (aiResult.recipient_number && !recipientValid) {
-      validationErrors.push(`Payment was sent to wrong bKash number (${aiResult.recipient_number}). Please send to the correct bKash number.`)
+      validationErrors.push(`Payment was sent to wrong account (${aiResult.recipient_number}). Please send to the correct bKash account: ${VALID_RECIPIENT_NUMBERS[0]}.`)
     }
 
     // Amount must be within tolerance
