@@ -131,8 +131,6 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
   const payment = lead.payments?.[0]
   const badge = STATUS_LABEL[lead.status] ?? STATUS_LABEL.pending
 
-  const isSite2 = lead.site === 'techpulse-noss' || lead.utm_content?.includes('[site:techpulse-noss]')
-
   const act = async (action: 'approve' | 'reject') => {
     setLoading(action)
     try {
@@ -169,11 +167,11 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
       markAccessSent()
     }
     const formattedWa = formatWhatsAppNumber(lead.whatsapp)
-    window.open(`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Hi ${lead.name},\n\nYour payment for the AI Bootcamp has been verified! 🎉\n\nHere is your course access link:\nhttps://your-lms-link.com\n\nHappy learning!`)}`, '_blank')
+    window.open(`https://wa.me/${formattedWa}?text=${encodeURIComponent(`Hi ${lead.name},\n\nYour payment for the AI Video Bootcamp (Bangladesh) has been verified! 🎉\n\nHere is your course access link:\nhttps://your-lms-link.com\n\nHappy learning!`)}`, '_blank')
   }
 
   const uaInfo = parseUA(lead.user_agent)
-  const showApproveButtons = isSite2 ? lead.status !== 'approved' : lead.status === 'payment_submitted'
+  const showApproveButtons = lead.status !== 'approved'
 
   return (
     <div className={`overflow-hidden rounded-xl border transition shadow-sm hover:shadow-md ${isSelected ? 'border-blue-400 bg-blue-50/30' : 'border-slate-200 bg-white'}`}>
@@ -188,10 +186,8 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
             <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-semibold ${badge.color}`}>
               {badge.icon} {badge.label}
             </span>
-            <span className={`inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold ${
-              isSite2 ? 'bg-cyan-50 text-cyan-700 border border-cyan-200' : 'bg-purple-50 text-purple-700 border border-purple-200'
-            }`}>
-              {isSite2 ? 'Site 2 (No SS / 1999)' : 'Site 1 (SS / 1999)'}
+            <span className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold bg-pink-50 text-pink-700 border border-pink-200">
+              bKash · ৳1,499
             </span>
           </div>
           <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-xs text-slate-500">
@@ -203,16 +199,16 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
                 {lead.source}
               </span>
             )}
-            <span>{new Date(lead.created_at).toLocaleDateString('en-PK')}</span>
+            <span>{new Date(lead.created_at).toLocaleDateString('en-GB')}</span>
           </div>
           {payment && (
             <div className="mt-1 flex flex-wrap gap-x-3 gap-y-0.5 text-xs">
-              {payment.amount && <span className="text-slate-900 font-bold">Paid: Rs. {payment.amount.toLocaleString()}</span>}
+              {payment.amount && <span className="text-slate-900 font-bold">Paid: ৳{payment.amount.toLocaleString()}</span>}
               {payment.recipient_number && <span className="text-slate-500">→ {payment.recipient_number}</span>}
               {payment.transaction_id && <span className="font-mono text-slate-400">{payment.transaction_id}</span>}
               {payment.ai_verified !== undefined && (
                 <span className={`font-semibold ${payment.ai_verified ? 'text-emerald-600' : 'text-amber-600'}`}>
-                  {payment.ai_verified ? '✓ AI Verified' : '⚠ Not AI Verified'}
+                  {payment.ai_verified ? '✓ AI Verified' : '⚠ Manual Check Needed'}
                 </span>
               )}
             </div>
@@ -286,12 +282,12 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
               <div>
                 <div className="font-semibold text-slate-500 uppercase tracking-wider text-[10px] mb-1">Payment Info</div>
                 <div className="space-y-0.5 text-slate-700">
-                  <div><span className="text-slate-400">Amount:</span> Rs. {payment.amount?.toLocaleString() ?? '—'}</div>
+                  <div><span className="text-slate-400">Amount:</span> ৳{payment.amount?.toLocaleString() ?? '—'}</div>
                   <div><span className="text-slate-400">Recipient:</span> {payment.recipient_number ?? '—'}</div>
                   <div><span className="text-slate-400">Sender:</span> {payment.sender_name ?? '—'}</div>
                   <div><span className="text-slate-400">TX ID:</span> <span className="font-mono">{payment.transaction_id ?? '—'}</span></div>
                   <div><span className="text-slate-400">Direction:</span> {payment.direction ?? '—'}</div>
-                  <div><span className="text-slate-400">Submitted:</span> {new Date(payment.submitted_at).toLocaleString('en-PK')}</div>
+                  <div><span className="text-slate-400">Submitted:</span> {new Date(payment.submitted_at).toLocaleString('en-GB')}</div>
                 </div>
               </div>
             )}
@@ -303,14 +299,14 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
              <div className="flex items-center gap-2 text-xs text-slate-600 overflow-x-auto pb-2">
                <div className="flex flex-col min-w-max">
                  <span className="font-medium text-slate-900">Registered</span>
-                 <span className="text-[10px] text-slate-400">{new Date(lead.created_at).toLocaleString('en-PK', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                 <span className="text-[10px] text-slate-400">{new Date(lead.created_at).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
                </div>
                {payment?.submitted_at && (
                  <>
                    <ArrowRight className="h-3 w-3 text-slate-300 shrink-0 mx-1" />
                    <div className="flex flex-col min-w-max">
                      <span className="font-medium text-slate-900">Paid</span>
-                     <span className="text-[10px] text-slate-400">{new Date(payment.submitted_at).toLocaleString('en-PK', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                     <span className="text-[10px] text-slate-400">{new Date(payment.submitted_at).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
                    </div>
                  </>
                )}
@@ -319,7 +315,7 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
                    <ArrowRight className="h-3 w-3 text-slate-300 shrink-0 mx-1" />
                    <div className="flex flex-col min-w-max">
                      <span className={`font-medium ${payment.admin_approved ? 'text-emerald-600' : 'text-red-600'}`}>{payment.admin_approved ? 'Approved' : 'Rejected'}</span>
-                     <span className="text-[10px] text-slate-400">{new Date(payment.approved_at).toLocaleString('en-PK', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                     <span className="text-[10px] text-slate-400">{new Date(payment.approved_at).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
                    </div>
                  </>
                )}
@@ -328,7 +324,7 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
                    <ArrowRight className="h-3 w-3 text-slate-300 shrink-0 mx-1" />
                    <div className="flex flex-col min-w-max">
                      <span className="font-medium text-blue-600">Access Sent</span>
-                     <span className="text-[10px] text-slate-400">{new Date(lead.access_sent_at).toLocaleString('en-PK', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
+                     <span className="text-[10px] text-slate-400">{new Date(lead.access_sent_at).toLocaleString('en-GB', { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' })}</span>
                    </div>
                  </>
                )}
@@ -358,7 +354,6 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
   const [loading, setLoading] = useState(true)
   const [filter, setFilter] = useState('')
   const [selectedSource, setSelectedSource] = useState('all')
-  const [selectedSite, setSelectedSite] = useState('all')
   const [search, setSearch] = useState('')
   const [startDate, setStartDate] = useState('')
   const [endDate, setEndDate] = useState('')
@@ -373,7 +368,6 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
     const params = new URLSearchParams({ page: String(page) })
     if (filter) params.set('status', filter)
     if (selectedSource && selectedSource !== 'all') params.set('source', selectedSource)
-    if (selectedSite && selectedSite !== 'all') params.set('site', selectedSite)
     if (search) params.set('search', search)
     if (startDate) params.set('startDate', startDate)
     if (endDate) params.set('endDate', endDate)
@@ -389,7 +383,6 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
       // Load Funnel Stats
       const funnelParams = new URLSearchParams()
       if (selectedSource && selectedSource !== 'all') funnelParams.set('source', selectedSource)
-      if (selectedSite && selectedSite !== 'all') funnelParams.set('site', selectedSite)
       if (startDate) funnelParams.set('startDate', startDate)
       if (endDate) funnelParams.set('endDate', endDate)
       const funnelRes = await fetch(`/api/admin/funnel?${funnelParams}`, { headers: { 'x-admin-token': token } })
@@ -399,7 +392,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
     } finally {
       setLoading(false)
     }
-  }, [token, filter, selectedSource, selectedSite, search, startDate, endDate, page, onLogout])
+  }, [token, filter, selectedSource, search, startDate, endDate, page, onLogout])
 
   useEffect(() => { load() }, [load])
 
@@ -461,17 +454,17 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
 
   const exportCSV = () => {
     const rows = [
-      ['Name', 'Email', 'WhatsApp', 'Site', 'Source', 'Medium', 'Campaign', 'Content', 'Status', 'Amount', 'TX ID', 'Enrolled'],
+      ['Name', 'Email', 'WhatsApp', 'Site', 'Source', 'Medium', 'Campaign', 'Content', 'Status', 'Amount (BDT)', 'TX ID', 'Enrolled'],
       ...leads.map(l => [
-        l.name, l.email, l.whatsapp, l.site ?? 'techpulse-replica', l.source ?? 'direct',
+        l.name, l.email, l.whatsapp, l.site ?? 'techpulse-bd', l.source ?? 'direct',
         (l as any).utm_medium ?? '', (l as any).utm_campaign ?? '', (l as any).utm_content ?? '',
         l.status, l.payments?.[0]?.amount ?? '', l.payments?.[0]?.transaction_id ?? '',
-        new Date(l.created_at).toLocaleDateString('en-PK'),
+        new Date(l.created_at).toLocaleDateString('en-GB'),
       ]),
     ]
     const csv = rows.map(r => r.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',')).join('\n')
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }))
-    a.download = `leads-${new Date().toISOString().slice(0,10)}.csv`; a.click()
+    a.download = `leads-bd-${new Date().toISOString().slice(0,10)}.csv`; a.click()
   }
 
   return (
@@ -484,20 +477,20 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
               style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div>
               <div className="text-sm font-bold text-slate-900">Admin Dashboard</div>
-              <div className="text-[11px] text-slate-400">AI Bootcamp Bangladesh</div>
+              <div className="text-[11px] font-semibold text-blue-600">AI Video Bootcamp Bangladesh (bKash · ৳1,499)</div>
             </div>
           </div>
           <div className="flex items-center gap-2">
             <button onClick={exportCSV}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 cursor-pointer">
               <Download className="h-3.5 w-3.5" /> Export CSV
             </button>
             <button onClick={() => load()}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 cursor-pointer">
               <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
             </button>
             <button onClick={onLogout}
-              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-50">
+              className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-50 cursor-pointer">
               <LogOut className="h-3.5 w-3.5" />
             </button>
           </div>
@@ -512,7 +505,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
             { label: 'Pending Review', val: submitted, icon: <Clock className="h-5 w-5 text-amber-600" />, bg: 'bg-amber-50' },
             { label: 'Approved', val: approved, icon: <CheckCircle className="h-5 w-5 text-emerald-600" />, bg: 'bg-emerald-50' },
             { label: 'Rejected', val: rejected, icon: <XCircle className="h-5 w-5 text-red-600" />, bg: 'bg-red-50' },
-            { label: 'Revenue (Actual)', val: `Rs. ${(funnel.totalRevenue ?? 0).toLocaleString()}`, icon: <TrendingUp className="h-5 w-5 text-purple-600" />, bg: 'bg-purple-50' },
+            { label: 'Revenue (Actual)', val: `৳${(funnel.totalRevenue ?? 0).toLocaleString()}`, icon: <TrendingUp className="h-5 w-5 text-purple-600" />, bg: 'bg-purple-50' },
           ].map((s, i) => (
             <div key={i} className="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
               <div className={`grid h-9 w-9 shrink-0 place-items-center rounded-lg ${s.bg}`}>{s.icon}</div>
@@ -527,22 +520,22 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
         {/* Funnel */}
         <div className="mt-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm">
           <div className="mb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
-            Conversion Funnel {selectedSite !== 'all' ? `[${selectedSite === 'techpulse-noss' ? 'Site 2: No SS' : 'Site 1: SS'}]` : '[All Sites]'} {selectedSource !== 'all' ? `(Source: ${selectedSource})` : ''}
+            Conversion Funnel {selectedSource !== 'all' ? `(Source: ${selectedSource})` : ''}
           </div>
           <div className="flex flex-col sm:flex-row gap-2">
             <div className="flex-1 rounded-lg bg-slate-50 p-3 text-center border border-slate-100">
               <div className="text-xl font-bold text-slate-800">{funnel.registered}</div>
-              <div className="text-[10px] uppercase text-slate-400 font-semibold mt-1">1. Registered</div>
+              <div className="text-[10px] uppercase text-slate-400 font-semibold mt-1">1. Registered (Leads)</div>
             </div>
             <div className="hidden sm:flex items-center justify-center text-slate-300"><ArrowRight className="h-4 w-4" /></div>
             <div className="flex-1 rounded-lg bg-blue-50 p-3 text-center border border-blue-100">
               <div className="text-xl font-bold text-blue-700">{funnel.paymentSubmitted}</div>
-              <div className="text-[10px] uppercase text-blue-500 font-semibold mt-1">2. Paid ({funnel.registered ? Math.round(funnel.paymentSubmitted/funnel.registered*100) : 0}%)</div>
+              <div className="text-[10px] uppercase text-blue-500 font-semibold mt-1">2. Paid & Uploaded ({funnel.registered ? Math.round(funnel.paymentSubmitted/funnel.registered*100) : 0}%)</div>
             </div>
             <div className="hidden sm:flex items-center justify-center text-slate-300"><ArrowRight className="h-4 w-4" /></div>
             <div className="flex-1 rounded-lg bg-emerald-50 p-3 text-center border border-emerald-100">
               <div className="text-xl font-bold text-emerald-700">{funnel.approved}</div>
-              <div className="text-[10px] uppercase text-emerald-600 font-semibold mt-1">3. Approved ({funnel.paymentSubmitted ? Math.round(funnel.approved/funnel.paymentSubmitted*100) : 0}%)</div>
+              <div className="text-[10px] uppercase text-emerald-600 font-semibold mt-1">3. Confirmed Access ({funnel.paymentSubmitted ? Math.round(funnel.approved/funnel.paymentSubmitted*100) : 0}%)</div>
             </div>
           </div>
         </div>
@@ -565,54 +558,35 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
 
         {/* Filters and Search */}
         <div className="mt-5 flex flex-col gap-3 rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-          {/* Top row: Website & Status filters */}
-          <div className="flex flex-col gap-3">
-            {/* Website Filter Pills */}
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            {/* Status Pills */}
             <div className="flex flex-wrap items-center gap-1.5">
-              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Website:</span>
-              {[
-                { id: 'all', label: 'All Websites' },
-                { id: 'techpulse-replica', label: 'Site 1 (SS / Rs. 1,999)' },
-                { id: 'techpulse-noss', label: 'Site 2 (No SS / Rs. 1,999)' }
-              ].map(s => (
-                <button key={s.id} onClick={() => { setSelectedSite(s.id); setPage(1) }}
-                  className={`rounded-full px-3 py-1 text-xs font-bold transition ${selectedSite === s.id ? 'bg-blue-600 text-white shadow-sm' : 'border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}>
-                  {s.label}
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Status:</span>
+              {['', 'pending', 'payment_submitted', 'approved', 'rejected'].map(f => (
+                <button key={f} onClick={() => { setFilter(f); setPage(1) }}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${filter === f ? 'text-white shadow-sm' : 'border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}
+                  style={filter === f ? { background: 'linear-gradient(135deg,#2563eb,#06b6d4)' } : {}}>
+                  {f === '' ? 'All' : STATUS_LABEL[f]?.label ?? f}
                 </button>
               ))}
             </div>
 
-            {/* Status & Source Filter Pills */}
-            <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between border-t border-slate-100 pt-2.5">
-              {/* Status Pills */}
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Status:</span>
-                {['', 'pending', 'payment_submitted', 'approved', 'rejected'].map(f => (
-                  <button key={f} onClick={() => { setFilter(f); setPage(1) }}
-                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${filter === f ? 'text-white shadow-sm' : 'border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}
-                    style={filter === f ? { background: 'linear-gradient(135deg,#2563eb,#06b6d4)' } : {}}>
-                    {f === '' ? 'All' : STATUS_LABEL[f]?.label ?? f}
-                  </button>
-                ))}
-              </div>
-
-              {/* Source Filter Pills */}
-              <div className="flex flex-wrap items-center gap-1.5">
-                <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Source:</span>
-                {[
-                  { id: 'all', label: 'All' },
-                  { id: 'google', label: 'Google' },
-                  { id: 'facebook', label: 'Meta' },
-                  { id: 'tiktok', label: 'TikTok' },
-                  { id: 'youtube', label: 'YouTube' },
-                  { id: 'direct', label: 'Direct' }
-                ].map(s => (
-                  <button key={s.id} onClick={() => { setSelectedSource(s.id); setPage(1) }}
-                    className={`rounded-full px-3 py-1 text-xs font-semibold transition ${selectedSource === s.id ? 'bg-slate-900 text-white shadow-sm' : 'border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}>
-                    {s.label}
-                  </button>
-                ))}
-              </div>
+            {/* Source Filter Pills */}
+            <div className="flex flex-wrap items-center gap-1.5">
+              <span className="text-[11px] font-bold uppercase tracking-wider text-slate-400 mr-1">Source:</span>
+              {[
+                { id: 'all', label: 'All' },
+                { id: 'google', label: 'Google' },
+                { id: 'facebook', label: 'Meta' },
+                { id: 'tiktok', label: 'TikTok' },
+                { id: 'youtube', label: 'YouTube' },
+                { id: 'direct', label: 'Direct' }
+              ].map(s => (
+                <button key={s.id} onClick={() => { setSelectedSource(s.id); setPage(1) }}
+                  className={`rounded-full px-3 py-1 text-xs font-semibold transition cursor-pointer ${selectedSource === s.id ? 'bg-slate-900 text-white shadow-sm' : 'border border-slate-200 bg-slate-50 text-slate-600 hover:bg-slate-100'}`}>
+                  {s.label}
+                </button>
+              ))}
             </div>
           </div>
 
@@ -623,8 +597,8 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
                <input type="date" value={startDate} onChange={e => setStartDate(e.target.value)} className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs outline-none focus:border-blue-500" />
                <span className="text-xs text-slate-400">to</span>
                <input type="date" value={endDate} onChange={e => setEndDate(e.target.value)} className="rounded-lg border border-slate-200 bg-slate-50 px-2.5 py-1 text-xs outline-none focus:border-blue-500" />
-               {(startDate || endDate || filter || (selectedSource !== 'all') || (selectedSite !== 'all') || search) && (
-                 <button type="button" onClick={() => { setStartDate(''); setEndDate(''); setFilter(''); setSelectedSource('all'); setSelectedSite('all'); setSearch(''); setPage(1); }} className="text-xs text-rose-600 font-semibold hover:underline ml-1">
+               {(startDate || endDate || filter || (selectedSource !== 'all') || search) && (
+                 <button type="button" onClick={() => { setStartDate(''); setEndDate(''); setFilter(''); setSelectedSource('all'); setSearch(''); setPage(1); }} className="text-xs text-rose-600 font-semibold hover:underline ml-1 cursor-pointer">
                    Clear All Filters
                  </button>
                )}
@@ -632,7 +606,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
 
              <div className="flex items-center gap-2">
                <input type="text" placeholder="Search name, email, phone..." value={search} onChange={e => setSearch(e.target.value)} className="w-52 rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs outline-none focus:border-blue-500" />
-               <button type="submit" className="rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-slate-700">Search</button>
+               <button type="submit" className="rounded-lg bg-slate-800 px-3.5 py-1.5 text-xs font-semibold text-white hover:bg-slate-700 cursor-pointer">Search</button>
              </div>
           </form>
         </div>
@@ -665,13 +639,13 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
           <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900 text-white px-4 py-3 rounded-full shadow-2xl flex items-center gap-4 z-50">
             <span className="text-sm font-semibold pl-2">{selectedIds.size} selected</span>
             <div className="flex items-center gap-2">
-              <button onClick={() => handleBulkAction('approve')} disabled={!!bulkLoading} className="bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50">
+              <button onClick={() => handleBulkAction('approve')} disabled={!!bulkLoading} className="bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50 cursor-pointer">
                 {bulkLoading === 'approve' ? <LoaderCircle className="h-3.5 w-3.5 animate-spin" /> : <CheckCircle className="h-3.5 w-3.5" />} Approve
               </button>
-              <button onClick={() => handleBulkAction('reject')} disabled={!!bulkLoading} className="bg-amber-600 hover:bg-amber-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50">
+              <button onClick={() => handleBulkAction('reject')} disabled={!!bulkLoading} className="bg-amber-600 hover:bg-amber-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50 cursor-pointer">
                 {bulkLoading === 'reject' ? <LoaderCircle className="h-3.5 w-3.5 animate-spin" /> : <XCircle className="h-3.5 w-3.5" />} Reject
               </button>
-              <button onClick={() => handleBulkAction('delete')} disabled={!!bulkLoading} className="bg-red-600 hover:bg-red-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50">
+              <button onClick={() => handleBulkAction('delete')} disabled={!!bulkLoading} className="bg-red-600 hover:bg-red-500 px-3 py-1.5 rounded-full text-xs font-semibold flex items-center gap-1 disabled:opacity-50 cursor-pointer">
                 {bulkLoading === 'delete' ? <LoaderCircle className="h-3.5 w-3.5 animate-spin" /> : <AlertCircle className="h-3.5 w-3.5" />} Delete
               </button>
             </div>
@@ -682,12 +656,12 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
         {total > 50 && (
           <div className="mt-6 flex items-center justify-center gap-3">
             <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}
-              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-40">
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
               Previous
             </button>
             <span className="text-sm text-slate-500">Page {page}</span>
             <button onClick={() => setPage(p => p + 1)} disabled={leads.length < 50}
-              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-40">
+              className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50 disabled:opacity-40 cursor-pointer">
               Next
             </button>
           </div>

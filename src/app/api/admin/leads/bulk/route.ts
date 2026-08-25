@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
         if (leadsToApprove) {
           for (const l of leadsToApprove) {
             const existingPayment = (l.payments as any)?.[0]
-            const coursePrice = existingPayment?.amount ? Number(existingPayment.amount) : (Number(process.env.COURSE_PRICE) || 1999)
+            const coursePrice = existingPayment?.amount ? Number(existingPayment.amount) : (Number(process.env.COURSE_PRICE) || 1499)
 
             if (existingPayment?.id) {
               await supabaseAdmin

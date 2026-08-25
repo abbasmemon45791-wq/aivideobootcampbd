@@ -119,7 +119,7 @@ export async function POST(req: NextRequest) {
     }
   }
 
-  let coursePrice = 1999
+  let coursePrice = Number(process.env.COURSE_PRICE) || 1499
   if (currentPaymentId) {
     const { data: p } = await supabaseAdmin.from('payments').select('amount').eq('id', currentPaymentId).maybeSingle()
     if (p?.amount && Number(p.amount) > 0) {
