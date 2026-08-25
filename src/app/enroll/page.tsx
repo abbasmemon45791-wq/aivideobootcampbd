@@ -216,12 +216,12 @@ function BankRow({ bank, title, num, colorClass = "text-slate-500" }: { bank: st
     <div className="flex items-center justify-between gap-3 border-b border-slate-200/60 py-4 last:border-0">
       <div className="min-w-0">
         <div className={`text-[11px] font-bold uppercase tracking-wider ${colorClass}`}>{bank}</div>
-        {title && <div className="mt-0.5 text-xs text-slate-500">{title}</div>}
-        <div className="mt-1 text-sm font-semibold tracking-wide text-slate-800 sm:text-base">{num}</div>
+        <div className="mt-1 text-xs font-semibold text-slate-700">Account Name: <span className="text-slate-900 font-bold">{title || 'The Patchee BD'}</span></div>
+        <div className="mt-1 text-base font-extrabold tracking-wide text-slate-900 sm:text-lg">{num}</div>
       </div>
       <button onClick={copy}
-        className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-slate-200 bg-white shadow-sm px-4 py-2 text-xs font-medium text-slate-700 transition hover:bg-slate-50 hover:border-slate-300 sm:px-3 sm:py-1.5 cursor-pointer">
-        {copied ? <><Check className="h-4 w-4 text-pink-600 sm:h-3.5 sm:w-3.5" /> Copied</> : <><Copy className="h-4 w-4 sm:h-3.5 sm:w-3.5" /> Copy</>}
+        className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-pink-200 bg-white shadow-sm px-4 py-2 text-xs font-bold text-pink-700 transition hover:bg-pink-50 hover:border-pink-300 sm:px-3 sm:py-1.5 cursor-pointer">
+        {copied ? <><Check className="h-4 w-4 text-pink-600 sm:h-3.5 sm:w-3.5" /> Copied</> : <><Copy className="h-4 w-4 sm:h-3.5 sm:w-3.5" /> Copy Number</>}
       </button>
     </div>
   )
