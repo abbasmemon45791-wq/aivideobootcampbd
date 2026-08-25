@@ -580,7 +580,7 @@ export default function HomePage() {
               href="/enroll"
               className="btn-premium inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white sm:w-auto sm:text-base"
             >
-              Enroll Now — PKR {PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+              Enroll Now — ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
             </Link>
             <a
               href="#modules"
@@ -639,7 +639,7 @@ export default function HomePage() {
           </div>
           <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/enroll" className="btn-premium inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold text-white sm:w-auto">
-              Enroll Now — PKR {PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+              Enroll Now — ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
             </Link>
             <a href="#reviews" className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 sm:w-auto">
               Read Reviews <ArrowDown className="h-5 w-5" />

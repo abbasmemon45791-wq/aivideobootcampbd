@@ -269,6 +269,12 @@ function Step2({
         <BankRow bank="bKash (Send Money / Personal)" title="The Patchee BD" num={BKASH_NUMBER} colorClass="text-pink-600 font-extrabold" />
       </div>
 
+      <button onClick={onContinue}
+        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-transform hover:scale-[1.02] cursor-pointer"
+        style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>
+        I&apos;ve Sent Payment — Continue to Upload Proof <ArrowRight className="h-5 w-5" />
+      </button>
+
       {/* Direct WhatsApp Support */}
       <div className="mt-4 rounded-2xl border border-emerald-200 bg-gradient-to-r from-emerald-50 to-teal-50 p-4 text-left shadow-sm">
         <div className="flex items-start gap-3">
@@ -292,11 +298,6 @@ function Step2({
         </div>
       </div>
 
-      <button onClick={onContinue}
-        className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-transform hover:scale-[1.02] cursor-pointer"
-        style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>
-        I&apos;ve Sent Payment — Continue to Upload Proof <ArrowRight className="h-5 w-5" />
-      </button>
       <button onClick={onBack}
         className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-slate-200 py-2.5 text-xs font-medium text-slate-500 hover:bg-slate-50 cursor-pointer">
         <ArrowLeft className="h-3.5 w-3.5" /> Back
