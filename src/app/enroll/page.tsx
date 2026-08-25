@@ -9,7 +9,7 @@ import {
 
 const COURSE_PRICE     = Number(process.env.NEXT_PUBLIC_COURSE_PRICE) || 1499
 const BKASH_NUMBER     = process.env.NEXT_PUBLIC_BKASH_NUMBER        ?? '01896195441'
-const BKASH_NAME       = process.env.NEXT_PUBLIC_BKASH_ACCOUNT_NAME  ?? 'The Patchee BD'
+const BKASH_NAME       = 'The Patchee BD'
 const WHATSAPP_SUPPORT = process.env.NEXT_PUBLIC_WHATSAPP_SUPPORT    ?? '8801847800664'
 
 const STEP_LABELS: Record<number, string> = { 1: 'Your Details', 2: 'Send Payment', 3: 'Upload Proof' }
@@ -266,7 +266,7 @@ function Step2({
 
       {/* bKash Payment Account Details */}
       <div className="mt-4 rounded-2xl border border-pink-200 bg-gradient-to-br from-pink-50/50 to-white px-4 shadow-sm">
-        <BankRow bank="bKash (Send Money / Personal)" title={BKASH_NAME} num={BKASH_NUMBER} colorClass="text-pink-600 font-extrabold" />
+        <BankRow bank="bKash (Send Money / Personal)" title="The Patchee BD" num={BKASH_NUMBER} colorClass="text-pink-600 font-extrabold" />
       </div>
 
       {/* Direct WhatsApp Support */}
