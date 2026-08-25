@@ -8,20 +8,20 @@ const sora = Sora({ subsets: ['latin'], variable: '--font-sora', weight: ['400',
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', weight: ['500','600','700'] })
 
 export const metadata: Metadata = {
-  title: 'AI Video Bootcamp Pakistan — Practical AI Content Creation Course',
-  description: "Practical AI creator training in Pakistan. Master AI video generation, prompt engineering, product photography, and creative workflows. 10 structured modules.",
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com'),
+  title: 'AI Video Bootcamp Bangladesh — Practical AI Content Creation Course',
+  description: "Practical AI creator training in Bangladesh. Master AI video generation, prompt engineering, product photography, and creative workflows. 10 structured modules.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com.bd'),
   openGraph: {
     type: 'website',
-    title: 'AI Video Bootcamp Pakistan',
-    description: 'Learn practical AI video generation and creative workflows. PKR 1,999 one-time payment. Lifetime access.',
+    title: 'AI Video Bootcamp Bangladesh',
+    description: 'Learn practical AI video generation and creative workflows. BDT ৳3,500 one-time payment. Lifetime access.',
   },
   twitter: { card: 'summary_large_image' },
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   // GA4 Measurement ID
-  const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || 'G-Y2SZLNREPD'
+  const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || ''
 
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${jakarta.variable}`}>
@@ -37,16 +37,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? 'YOUR_PIXEL_ID'}');
+            fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? ''}');
             fbq('track', 'PageView');
           `}
         </Script>
 
         {/* Google Analytics 4 — gtag.js */}
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-          strategy="afterInteractive"
-        />
+        {GA4_ID && (
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
+            strategy="afterInteractive"
+          />
+        )}
         <Script id="ga4-init" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];

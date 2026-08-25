@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS leads (
   created_at TIMESTAMPTZ DEFAULT NOW(),
   
   -- Tracking columns
-  site VARCHAR(100) DEFAULT 'techpulse-replica', -- 'techpulse-replica' | 'techpulse-noss'
+  site VARCHAR(100) DEFAULT 'techpulse-bd', -- 'techpulse-bd' (Bangladesh site)
   source VARCHAR(50) DEFAULT 'direct',
   utm_medium VARCHAR(100),
   utm_campaign VARCHAR(100),
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS leads (
   user_agent TEXT,
   gclid VARCHAR(255),  -- Google click ID (from ?gclid= param)
   fbclid VARCHAR(255), -- Meta click ID (from ?fbclid= param)
+  ga_client_id VARCHAR(100), -- GA4 browser client ID for server-side purchase matching
   
   -- Access Tracking
   access_sent BOOLEAN DEFAULT FALSE,
@@ -30,17 +31,18 @@ CREATE TABLE IF NOT EXISTS leads (
 -- RUN THIS MIGRATION IF TABLE ALREADY EXISTS:
 -- ==========================================
 -- ALTER TABLE leads 
---   ADD COLUMN IF NOT EXISTS site VARCHAR(100) DEFAULT 'techpulse-replica',
+--   ADD COLUMN IF NOT EXISTS site VARCHAR(100) DEFAULT 'techpulse-bd',
 --   ADD COLUMN IF NOT EXISTS source VARCHAR(50) DEFAULT 'direct',
 --   ADD COLUMN IF NOT EXISTS utm_medium VARCHAR(100),
 --   ADD COLUMN IF NOT EXISTS utm_campaign VARCHAR(100),
 --   ADD COLUMN IF NOT EXISTS utm_content VARCHAR(255),
 --   ADD COLUMN IF NOT EXISTS user_agent TEXT,
 --   ADD COLUMN IF NOT EXISTS gclid VARCHAR(255),
---   ADD COLUMN IF NOT EXISTS fbclid VARCHAR(255);
+--   ADD COLUMN IF NOT EXISTS fbclid VARCHAR(255),
+--   ADD COLUMN IF NOT EXISTS ga_client_id VARCHAR(100);
 -- ==========================================
 
--- PAYMENTS table: Step 3 screenshot submission
+-- PAYMENTS table: payment records (no screenshot in noss/bd flow — created on admin approve)
 CREATE TABLE IF NOT EXISTS payments (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   lead_id UUID REFERENCES leads(id) ON DELETE CASCADE,

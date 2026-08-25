@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import Link from 'next/link'
 import { ArrowLeft, Shield } from 'lucide-react'
 
@@ -12,7 +12,7 @@ export default function PrivacyPolicy() {
             <div className="grid h-9 w-9 place-items-center rounded-xl text-white font-bold text-sm shadow-sm" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div className="leading-tight">
               <div className="font-['Sora'] text-sm font-bold tracking-tight sm:text-base">AI Bootcamp</div>
-              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Pakistan</div>
+              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Bangladesh</div>
             </div>
           </Link>
           <Link href="/" className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
@@ -34,14 +34,14 @@ export default function PrivacyPolicy() {
 
           <h2>1. Who We Are</h2>
           <p>
-            AI Bootcamp Pakistan (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an online education platform teaching practical AI creative skills to students in Pakistan and globally. Our website is hosted on Vercel. We are operated by an individual business and can be reached via email at <a href="mailto:aivideoboootcamp@gmail.com" className="text-blue-600 hover:underline">aivideoboootcamp@gmail.com</a> or via WhatsApp at <a href="https://wa.me/923180298090" className="text-blue-600 hover:underline">+92 318 0298090</a>.
+            AI Bootcamp Bangladesh (&quot;we&quot;, &quot;us&quot;, &quot;our&quot;) is an online education platform teaching practical AI creative skills to students in Bangladesh and globally. Our website is hosted on Vercel. We are operated by an individual business and can be reached via email at <a href="mailto:aivideoboootcamp@gmail.com" className="text-blue-600 hover:underline">aivideoboootcamp@gmail.com</a> or via WhatsApp at <a href="https://wa.me/8801847800664" className="text-blue-600 hover:underline">+8801847800664</a>.
           </p>
 
           <h2>2. Information We Collect</h2>
           <p>We collect the following information when you interact with our website or enroll in our programs:</p>
           <ul className="list-disc pl-6 space-y-1">
             <li><strong>Personal identifiers:</strong> Full name, email address, WhatsApp/phone number</li>
-            <li><strong>Payment information:</strong> Transaction references from JazzCash, EasyPaisa, or bank transfer screenshots (we do not store card details)</li>
+            <li><strong>Payment information:</strong> Transaction references from bKash payment reference numbers (we do not store card details)</li>
             <li><strong>Technical data:</strong> IP address, browser type, device type, operating system, pages visited, time on site</li>
             <li><strong>Advertising identifiers:</strong> Google Click ID (GCLID), Meta Pixel ID, UTM parameters (source, medium, campaign, content), and cookies from ad platforms</li>
           </ul>
@@ -80,11 +80,11 @@ export default function PrivacyPolicy() {
           <h2>7. Data Sharing &amp; Third Parties</h2>
           <p>We do not sell your personal data. We share data only with the following categories of third parties, and only to the extent necessary:</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li><strong>Google LLC</strong> — For analytics (GA4) and advertising (Google Ads). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Google Privacy Policy →</a></li>
-            <li><strong>Meta Platforms, Inc.</strong> — For advertising measurement via Pixel. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Meta Privacy Policy →</a></li>
-            <li><strong>Vercel, Inc.</strong> — Our website hosting provider. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Vercel Privacy Policy →</a></li>
-            <li><strong>Supabase, Inc.</strong> — Our database provider for storing enrollment data. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Supabase Privacy Policy →</a></li>
-            <li><strong>Payment processors</strong> — JazzCash, EasyPaisa, or bank transfers handle payment processing under their own privacy policies</li>
+            <li><strong>Google LLC</strong> â€” For analytics (GA4) and advertising (Google Ads). <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Google Privacy Policy â†’</a></li>
+            <li><strong>Meta Platforms, Inc.</strong> â€” For advertising measurement via Pixel. <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Meta Privacy Policy â†’</a></li>
+            <li><strong>Vercel, Inc.</strong> â€” Our website hosting provider. <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Vercel Privacy Policy â†’</a></li>
+            <li><strong>Supabase, Inc.</strong> â€” Our database provider for storing enrollment data. <a href="https://supabase.com/privacy" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">Supabase Privacy Policy â†’</a></li>
+            <li><strong>Payment processors</strong> â€” bKash handle payment processing under their own privacy policies</li>
           </ul>
 
           <h2>8. Data Retention</h2>
@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
             <li><strong>Opt-out of ads:</strong> Use the Google and Meta opt-out links provided in sections 4 and 5 above</li>
             <li><strong>Cookie control:</strong> Adjust your browser settings to block or delete cookies</li>
           </ul>
-          <p>To exercise these rights, contact us via WhatsApp at <a href="https://wa.me/923180298090" className="text-blue-600 hover:underline">+92 318 0298090</a>.</p>
+          <p>To exercise these rights, contact us via WhatsApp at <a href="https://wa.me/8801847800664" className="text-blue-600 hover:underline">+8801847800664</a>.</p>
 
           <h2>10. Children&apos;s Privacy</h2>
           <p>Our services are not directed to children under 18. We do not knowingly collect personal information from minors. If you believe a minor has submitted data to us, please contact us immediately.</p>
@@ -109,7 +109,7 @@ export default function PrivacyPolicy() {
           <h2>12. Contact Us</h2>
           <p>If you have any questions about this Privacy Policy or how we handle your data, please contact us:</p>
           <ul className="list-disc pl-6 space-y-1">
-            <li>WhatsApp: <a href="https://wa.me/923180298090" className="text-blue-600 hover:underline">+92 318 0298090</a></li>
+            <li>WhatsApp: <a href="https://wa.me/8801847800664" className="text-blue-600 hover:underline">+8801847800664</a></li>
           </ul>
         </div>
       </main>
@@ -118,17 +118,19 @@ export default function PrivacyPolicy() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
             <div className="grid h-9 w-9 place-items-center rounded-xl text-white font-bold text-sm" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
-            <div className="font-['Sora'] text-sm font-bold text-white">AI Bootcamp Pakistan</div>
+            <div className="font-['Sora'] text-sm font-bold text-white">AI Bootcamp Bangladesh</div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link href="/privacy" className="text-white/60 hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="text-white/60 hover:text-white">Terms of Service</Link>
             <Link href="/refund" className="text-white/60 hover:text-white">Refund Policy</Link>
             <Link href="/contact" className="text-white/60 hover:text-white">Contact Us</Link>
-            <span className="text-white/40">© 2026 AI Bootcamp Pakistan. All rights reserved.</span>
+            <span className="text-white/40">Â© 2026 AI Bootcamp Bangladesh. All rights reserved.</span>
           </div>
         </div>
       </footer>
     </div>
   )
 }
+
+

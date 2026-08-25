@@ -1,13 +1,13 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowLeft, ShieldCheck, Mail, MessageCircle } from 'lucide-react'
 
 export const metadata = {
-  title: 'Refund Policy — AI Bootcamp Pakistan',
+  title: 'Refund Policy â€” AI Bootcamp Bangladesh',
   description: 'Our 100% money-back guarantee and refund policy. Simple, transparent, and hassle-free.',
 }
 
 export default function RefundPage() {
-  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '923180298090'
+  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '8801847800664'
   const SUPPORT_EMAIL = 'aivideoboootcamp@gmail.com'
 
   return (
@@ -19,7 +19,7 @@ export default function RefundPage() {
             <div className="grid h-9 w-9 place-items-center rounded-xl font-bold text-sm text-white" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div className="leading-tight">
               <div className="font-['Sora'] text-sm font-bold tracking-tight sm:text-base">AI Bootcamp</div>
-              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Pakistan</div>
+              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Bangladesh</div>
             </div>
           </Link>
           <Link href="/" className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
@@ -38,14 +38,14 @@ export default function RefundPage() {
             Refund & Cancellation Policy
           </h1>
           <p className="mt-2 text-sm text-slate-500">
-            Last Updated: January 2026 · AI Bootcamp Pakistan
+            Last Updated: January 2026 Â· AI Bootcamp Bangladesh
           </p>
         </div>
 
         <div className="rounded-2xl border border-blue-100 bg-blue-50/50 p-6 mb-8 text-sm leading-relaxed text-slate-700">
           <h3 className="font-['Sora'] font-bold text-slate-900 text-base mb-2">Our Promise to You</h3>
           <p>
-            We stand behind the quality and practical depth of our training. If you enroll in AI Bootcamp Pakistan, start learning, and feel the course is not delivering value, we offer a straightforward, no-hassle refund guarantee under the terms detailed below.
+            We stand behind the quality and practical depth of our training. If you enroll in AI Bootcamp Bangladesh, start learning, and feel the course is not delivering value, we offer a straightforward, no-hassle refund guarantee under the terms detailed below.
           </p>
         </div>
 
@@ -96,7 +96,7 @@ export default function RefundPage() {
           <div>
             <h2 className="font-['Sora'] text-xl font-bold text-slate-900 mb-2">4. Processing Time & Method</h2>
             <p>
-              Once your refund request is verified, refunds are processed within <strong>3 to 5 business days</strong>. Refunds will be sent back to your original payment method (JazzCash, EasyPaisa, or Bank Account Transfer). You will receive a confirmation receipt via email and WhatsApp once the transfer is completed.
+              Once your refund request is verified, refunds are processed within <strong>3 to 5 business days</strong>. Refunds will be sent back to your original payment method (bKash Account Transfer). You will receive a confirmation receipt via email and WhatsApp once the transfer is completed.
             </p>
           </div>
 
@@ -110,7 +110,7 @@ export default function RefundPage() {
           <div>
             <h2 className="font-['Sora'] text-xl font-bold text-slate-900 mb-2">6. Contact Us</h2>
             <p>
-              If you have any questions or require assistance regarding our policies, our support team is available Monday through Saturday, 9:00 AM – 9:00 PM PKT at <a href={`mailto:${SUPPORT_EMAIL}`} className="text-blue-600 hover:underline">{SUPPORT_EMAIL}</a>.
+              If you have any questions or require assistance regarding our policies, our support team is available Monday through Saturday, 9:00 AM â€“ 9:00 PM BST (Bangladesh Standard Time) at <a href={`mailto:${SUPPORT_EMAIL}`} className="text-blue-600 hover:underline">{SUPPORT_EMAIL}</a>.
             </p>
           </div>
         </div>
@@ -121,7 +121,7 @@ export default function RefundPage() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
             <div className="grid h-8 w-8 place-items-center rounded-lg font-bold text-xs text-white" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
-            <div className="text-xs font-semibold text-white">AI Bootcamp Pakistan</div>
+            <div className="text-xs font-semibold text-white">AI Bootcamp Bangladesh</div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
@@ -129,9 +129,11 @@ export default function RefundPage() {
             <Link href="/refund" className="text-white/60 hover:text-white transition-colors">Refund Policy</Link>
             <Link href="/contact" className="text-white/60 hover:text-white transition-colors">Contact Us</Link>
           </div>
-          <div className="text-xs text-white/40">© 2026 AI Bootcamp Pakistan. All rights reserved.</div>
+          <div className="text-xs text-white/40">Â© 2026 AI Bootcamp Bangladesh. All rights reserved.</div>
         </div>
       </footer>
     </div>
   )
 }
+
+

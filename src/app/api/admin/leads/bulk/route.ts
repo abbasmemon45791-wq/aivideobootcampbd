@@ -51,7 +51,7 @@ export async function POST(req: NextRequest) {
       if (action === 'approve') {
         const { data: leadsToApprove } = await supabaseAdmin
           .from('leads')
-          .select('id, name, email, whatsapp, site, utm_content, payments(id, amount)')
+          .select('*, payments(id, amount)')
           .in('id', leadIds)
 
         if (leadsToApprove) {
@@ -89,6 +89,9 @@ export async function POST(req: NextRequest) {
               const GA4_ID     = process.env.NEXT_PUBLIC_GA4_ID || 'G-Y2SZLNREPD'
               const API_SECRET = process.env.GA4_API_SECRET || 'ZCnSzNHmT5Cte3cAOZ8rVQ'
 
+              const gaClientIdFromUtm = l.utm_content?.match(/\[ga:([^\]]+)\]/)?.[1]
+              const resolvedClientId = l.ga_client_id || gaClientIdFromUtm || (l.email ? hashData(l.email.toLowerCase().trim()).slice(0, 20) : `admin_${Date.now()}`)
+
               if (GA4_ID && API_SECRET) {
                 await fetch(
                   `https://www.google-analytics.com/mp/collect?measurement_id=${GA4_ID}&api_secret=${API_SECRET}`,
@@ -96,18 +99,17 @@ export async function POST(req: NextRequest) {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
-                      client_id: l.email
-                        ? hashData(l.email.toLowerCase().trim()).slice(0, 20)
-                        : `admin_${Date.now()}`,
+                      client_id: resolvedClientId,
                       events: [{
                         name: 'purchase',
                         params: {
                           transaction_id: transactionId,
                           value: coursePrice,
-                          currency: 'PKR',
+                          currency: 'BDT',
+                          ...(l.gclid && { gclid: l.gclid }),
                           items: [{
-                            item_id:   'ai-bootcamp-pk',
-                            item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Pakistan',
+                            item_id:   'ai-bootcamp-bd',
+                            item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Bangladesh',
                             price:     coursePrice,
                             quantity:  1,
                           }],
@@ -153,7 +155,7 @@ export async function POST(req: NextRequest) {
                           ...(hashedPhone && { ph: [hashedPhone] }),
                         },
                         custom_data: {
-                          currency: 'PKR',
+                          currency: 'BDT',
                           value:    coursePrice,
                         },
                       }],

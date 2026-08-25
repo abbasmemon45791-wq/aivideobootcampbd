@@ -1,13 +1,13 @@
-import Link from 'next/link'
+﻿import Link from 'next/link'
 import { ArrowLeft, Mail, MessageCircle, Clock, MapPin, ShieldCheck } from 'lucide-react'
 
 export const metadata = {
-  title: 'Contact Us — AI Bootcamp Pakistan',
-  description: 'Get in touch with AI Bootcamp Pakistan support team via email or WhatsApp.',
+  title: 'Contact Us â€” AI Bootcamp Bangladesh',
+  description: 'Get in touch with AI Bootcamp Bangladesh support team via email or WhatsApp.',
 }
 
 export default function ContactPage() {
-  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '923180298090'
+  const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '8801847800664'
   const SUPPORT_EMAIL = 'aivideoboootcamp@gmail.com'
 
   return (
@@ -19,7 +19,7 @@ export default function ContactPage() {
             <div className="grid h-9 w-9 place-items-center rounded-xl font-bold text-sm text-white" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div className="leading-tight">
               <div className="font-['Sora'] text-sm font-bold tracking-tight sm:text-base">AI Bootcamp</div>
-              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Pakistan</div>
+              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Bangladesh</div>
             </div>
           </Link>
           <Link href="/" className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50 transition-colors">
@@ -73,7 +73,7 @@ export default function ContactPage() {
             <Clock className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
             <div>
               <strong className="text-slate-800">Support Hours:</strong>
-              <p className="text-xs text-slate-500 mt-0.5">Monday to Saturday · 9:00 AM to 9:00 PM PKT (Pakistan Standard Time)</p>
+              <p className="text-xs text-slate-500 mt-0.5">Monday to Saturday Â· 9:00 AM to 9:00 PM PKT (Bangladesh Standard Time)</p>
               <p className="text-xs text-slate-500">Expected email response time: Within 24 business hours.</p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function ContactPage() {
             <MapPin className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
             <div>
               <strong className="text-slate-800">Location:</strong>
-              <p className="text-xs text-slate-500 mt-0.5">Lahore, Punjab, Pakistan</p>
+              <p className="text-xs text-slate-500 mt-0.5">Dhaka, Bangladesh</p>
               <p className="text-xs text-slate-500">Online educational training provider.</p>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function ContactPage() {
         <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
             <div className="grid h-8 w-8 place-items-center rounded-lg font-bold text-xs text-white" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
-            <div className="text-xs font-semibold text-white">AI Bootcamp Pakistan</div>
+            <div className="text-xs font-semibold text-white">AI Bootcamp Bangladesh</div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link href="/privacy" className="text-white/60 hover:text-white transition-colors">Privacy Policy</Link>
@@ -102,9 +102,10 @@ export default function ContactPage() {
             <Link href="/refund" className="text-white/60 hover:text-white transition-colors">Refund Policy</Link>
             <Link href="/contact" className="text-white/60 hover:text-white transition-colors">Contact Us</Link>
           </div>
-          <div className="text-xs text-white/40">© 2026 AI Bootcamp Pakistan. All rights reserved.</div>
+          <div className="text-xs text-white/40">Â© 2026 AI Bootcamp Bangladesh. All rights reserved.</div>
         </div>
       </footer>
     </div>
   )
 }
+

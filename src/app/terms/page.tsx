@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import Link from 'next/link'
 import { ArrowLeft, FileText } from 'lucide-react'
 
@@ -12,7 +12,7 @@ export default function TermsOfService() {
             <div className="grid h-9 w-9 place-items-center rounded-xl text-white font-bold text-sm shadow-sm" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div className="leading-tight">
               <div className="font-['Sora'] text-sm font-bold tracking-tight sm:text-base">AI Bootcamp</div>
-              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Pakistan</div>
+              <div className="-mt-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-600">Bangladesh</div>
             </div>
           </Link>
           <Link href="/" className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600 hover:bg-slate-50">
@@ -34,27 +34,27 @@ export default function TermsOfService() {
 
           <h2>1. Acceptance of Terms</h2>
           <p>
-            By accessing or using the AI Bootcamp Pakistan website and services (&quot;Services&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree with any part of these Terms, you must not use our Services.
+            By accessing or using the AI Bootcamp Bangladesh website and services (&quot;Services&quot;), you agree to be bound by these Terms of Service (&quot;Terms&quot;). If you do not agree with any part of these Terms, you must not use our Services.
           </p>
 
           <h2>2. Description of Service</h2>
           <p>
-            AI Bootcamp Pakistan provides pre-recorded online training courses focused on AI creative skills, including AI video generation, AI image creation, prompt engineering, and related digital skills. The course content is delivered through our learning management system (LMS) and community platform.
+            AI Bootcamp Bangladesh provides pre-recorded online training courses focused on AI creative skills, including AI video generation, AI image creation, prompt engineering, and related digital skills. The course content is delivered through our learning management system (LMS) and community platform.
           </p>
 
           <h2>3. Enrollment &amp; Payment</h2>
           <ul className="list-disc pl-6 space-y-1">
-            <li>Enrollment requires providing your name, email, and WhatsApp number, followed by payment via JazzCash, EasyPaisa, or bank transfer</li>
+            <li>Enrollment requires providing your name, email, and WhatsApp number, followed by payment via bKash</li>
             <li>Payment is verified manually through screenshot review. Access is granted only after successful verification</li>
-            <li>All prices are listed in Pakistani Rupees (PKR) unless stated otherwise</li>
+            <li>All prices are listed in Bangladeshi Rupees (BDT) unless stated otherwise</li>
             <li>The enrollment fee is a one-time payment that grants lifetime access to the course content available at the time of purchase, plus any future updates</li>
           </ul>
 
           <h2>4. Earnings Disclaimer</h2>
           <div className="rounded-xl border-2 border-amber-200 bg-amber-50 p-5 not-prose">
-            <p className="text-sm font-semibold text-amber-800 mb-2">⚠️ Important Disclaimer</p>
+            <p className="text-sm font-semibold text-amber-800 mb-2">âš ï¸ Important Disclaimer</p>
             <p className="text-sm text-amber-700 leading-relaxed">
-              AI Bootcamp Pakistan is an educational service that teaches AI creative skills. <strong>We do not guarantee any specific income, earnings, or financial results.</strong> Any income examples, figures, or testimonials shared on our website, social media, or marketing materials represent the results of individual students and are not typical. Your results will vary based on your effort, skills, experience, market conditions, and many other factors outside our control.
+              AI Bootcamp Bangladesh is an educational service that teaches AI creative skills. <strong>We do not guarantee any specific income, earnings, or financial results.</strong> Any income examples, figures, or testimonials shared on our website, social media, or marketing materials represent the results of individual students and are not typical. Your results will vary based on your effort, skills, experience, market conditions, and many other factors outside our control.
             </p>
             <p className="text-sm text-amber-700 leading-relaxed mt-2">
               References to earning potential or income opportunities are provided for educational and illustrative purposes only. They should not be construed as a guarantee or promise of actual earnings. Success in any business or freelance endeavor requires hard work, dedication, and is not guaranteed by completing this course.
@@ -68,14 +68,14 @@ export default function TermsOfService() {
           <ul className="list-disc pl-6 space-y-1">
             <li>If after watching the first 4 modules you do not find value in the course, you may request a full refund</li>
             <li>Refund requests must be made within the eligible refund window after enrollment</li>
-            <li>To request a refund, contact us via WhatsApp at <a href="https://wa.me/923180298090" className="text-blue-600 hover:underline">+92 318 0298090</a></li>
-            <li>Refunds will be processed within 7–10 business days via the same payment method used for enrollment</li>
+            <li>To request a refund, contact us via WhatsApp at <a href="https://wa.me/8801847800664" className="text-blue-600 hover:underline">+8801847800664</a></li>
+            <li>Refunds will be processed within 7â€“10 business days via the same payment method used for enrollment</li>
             <li>No refunds will be issued after the eligible refund period or after accessing more than 50% of the course content</li>
           </ul>
 
           <h2>6. Intellectual Property</h2>
           <p>
-            All course content, including but not limited to videos, text, images, graphics, prompts, templates, and downloadable resources, is the intellectual property of AI Bootcamp Pakistan and is protected by copyright law. You may not reproduce, distribute, modify, or share any course materials without our explicit written permission.
+            All course content, including but not limited to videos, text, images, graphics, prompts, templates, and downloadable resources, is the intellectual property of AI Bootcamp Bangladesh and is protected by copyright law. You may not reproduce, distribute, modify, or share any course materials without our explicit written permission.
           </p>
 
           <h2>7. User Responsibilities</h2>
@@ -88,7 +88,7 @@ export default function TermsOfService() {
 
           <h2>8. Limitation of Liability</h2>
           <p>
-            To the maximum extent permitted by law, AI Bootcamp Pakistan shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of our Services. Our total liability shall not exceed the amount you paid for enrollment.
+            To the maximum extent permitted by law, AI Bootcamp Bangladesh shall not be liable for any indirect, incidental, special, or consequential damages arising out of or in connection with your use of our Services. Our total liability shall not exceed the amount you paid for enrollment.
           </p>
 
           <h2>9. Third-Party Services</h2>
@@ -103,14 +103,14 @@ export default function TermsOfService() {
 
           <h2>11. Governing Law</h2>
           <p>
-            These Terms shall be governed by and construed in accordance with the laws of Pakistan. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Pakistan.
+            These Terms shall be governed by and construed in accordance with the laws of Bangladesh. Any disputes arising under these Terms shall be subject to the exclusive jurisdiction of the courts in Bangladesh.
           </p>
 
           <h2>12. Contact Us</h2>
           <p>If you have any questions about these Terms of Service, please contact us:</p>
           <ul className="list-disc pl-6 space-y-1">
             <li>Email: <a href="mailto:aivideoboootcamp@gmail.com" className="text-blue-600 hover:underline">aivideoboootcamp@gmail.com</a></li>
-            <li>WhatsApp: <a href="https://wa.me/923180298090" className="text-blue-600 hover:underline">+92 318 0298090</a></li>
+            <li>WhatsApp: <a href="https://wa.me/8801847800664" className="text-blue-600 hover:underline">+8801847800664</a></li>
           </ul>
         </div>
       </main>
@@ -119,17 +119,19 @@ export default function TermsOfService() {
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
             <div className="grid h-9 w-9 place-items-center rounded-xl text-white font-bold text-sm" style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
-            <div className="font-['Sora'] text-sm font-bold text-white">AI Bootcamp Pakistan</div>
+            <div className="font-['Sora'] text-sm font-bold text-white">AI Bootcamp Bangladesh</div>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-4 text-xs">
             <Link href="/privacy" className="text-white/60 hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="text-white/60 hover:text-white">Terms of Service</Link>
             <Link href="/refund" className="text-white/60 hover:text-white">Refund Policy</Link>
             <Link href="/contact" className="text-white/60 hover:text-white">Contact Us</Link>
-            <span className="text-white/40">© 2026 AI Bootcamp Pakistan. All rights reserved.</span>
+            <span className="text-white/40">Â© 2026 AI Bootcamp Bangladesh. All rights reserved.</span>
           </div>
         </div>
       </footer>
     </div>
   )
 }
+
+

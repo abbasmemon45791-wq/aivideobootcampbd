@@ -29,8 +29,9 @@ const parseUA = (ua?: string) => {
 
 const formatWhatsAppNumber = (num: string) => {
   let cleaned = num.replace(/\D/g, '')
+  // Bangladesh: local numbers start with 0 → replace with 880
   if (cleaned.startsWith('0')) {
-    cleaned = '92' + cleaned.substring(1)
+    cleaned = '880' + cleaned.substring(1)
   }
   return cleaned
 }
@@ -104,7 +105,7 @@ function AdminLogin({ onLogin }: { onLogin: () => void }) {
           <Lock className="h-6 w-6" />
         </div>
         <h1 className="text-center text-xl font-bold text-slate-900">Admin Access</h1>
-        <p className="mt-1 text-center text-sm text-slate-400">AI Bootcamp Pakistan</p>
+        <p className="mt-1 text-center text-sm text-slate-400">AI Bootcamp Bangladesh</p>
         <form onSubmit={submit} className="mt-6 space-y-3">
           <input type="password" value={pw} onChange={e => setPw(e.target.value)}
             placeholder="Admin password" required autoFocus
@@ -483,7 +484,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
               style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div>
               <div className="text-sm font-bold text-slate-900">Admin Dashboard</div>
-              <div className="text-[11px] text-slate-400">AI Bootcamp Pakistan</div>
+              <div className="text-[11px] text-slate-400">AI Bootcamp Bangladesh</div>
             </div>
           </div>
           <div className="flex items-center gap-2">

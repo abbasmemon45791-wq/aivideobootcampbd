@@ -95,7 +95,7 @@ export async function POST(req: NextRequest) {
   // Fetch lead for conversion data
   const { data: lead } = await supabaseAdmin
     .from('leads')
-    .select('id, name, email, whatsapp, gclid, site, utm_content')
+    .select('*')
     .eq('id', leadId)
     .maybeSingle()
 
@@ -135,7 +135,7 @@ export async function POST(req: NextRequest) {
       })
       .eq('id', currentPaymentId)
   } else if (action === 'approve') {
-    coursePrice = Number(process.env.COURSE_PRICE) || 1999
+    coursePrice = Number(process.env.COURSE_PRICE) || 1499
     await supabaseAdmin
       .from('payments')
       .insert({
@@ -155,10 +155,13 @@ export async function POST(req: NextRequest) {
 
     // ── 1. GA4 Measurement Protocol (server-side) ─────────────────────────
     // This is guaranteed delivery — no ad blockers, no page-load timing issues.
-    // Requires: NEXT_PUBLIC_GA4_ID (G-XXXXXXXXXX) + GA4_API_SECRET (from GA4 → Admin → Data Streams → Measurement Protocol API secrets)
+    // Uses the real browser GA client_id (or fallback) + gclid so Google Ads attributes the conversion.
     try {
       const GA4_ID     = process.env.NEXT_PUBLIC_GA4_ID || 'G-Y2SZLNREPD'
       const API_SECRET = process.env.GA4_API_SECRET || 'ZCnSzNHmT5Cte3cAOZ8rVQ'
+
+      const gaClientIdFromUtm = lead.utm_content?.match(/\[ga:([^\]]+)\]/)?.[1]
+      const resolvedClientId = lead.ga_client_id || gaClientIdFromUtm || (lead.email ? hashData(lead.email.toLowerCase().trim()).slice(0, 20) : `admin_${Date.now()}`)
 
       if (GA4_ID && API_SECRET) {
         await fetch(
@@ -167,20 +170,17 @@ export async function POST(req: NextRequest) {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              // client_id is required by GA4 MP — use a stable per-user value.
-              // Ideally passed from browser (ga4 cookie), here we use email hash as fallback.
-              client_id: lead.email
-                ? hashData(lead.email.toLowerCase().trim()).slice(0, 20)
-                : `admin_${Date.now()}`,
+              client_id: resolvedClientId,
               events: [{
                 name: 'purchase',
                 params: {
                   transaction_id: transactionId,
                   value: coursePrice,
-                  currency: 'PKR',
+                  currency: 'BDT',
+                  ...(lead.gclid && { gclid: lead.gclid }),
                   items: [{
-                    item_id:   'ai-bootcamp-pk',
-                    item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Pakistan',
+                    item_id:   'ai-bootcamp-bd',
+                    item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Bangladesh',
                     price:     coursePrice,
                     quantity:  1,
                   }],
@@ -229,7 +229,7 @@ export async function POST(req: NextRequest) {
                   ...(hashedPhone && { ph: [hashedPhone] }),
                 },
                 custom_data: {
-                  currency: 'PKR',
+                  currency: 'BDT',
                   value:    coursePrice,
                 },
               }],

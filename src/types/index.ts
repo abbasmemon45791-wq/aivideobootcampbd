@@ -46,7 +46,8 @@ export interface VerificationResult {
   sender_name?: string
   direction?: 'sent' | 'received' | 'unknown'
   status?: string
-  platform?: 'easypaisa' | 'jazzcash' | 'bank_transfer' | 'sadapay' | 'unknown'
+  // bkash added for Bangladesh site
+  platform?: 'bkash' | 'nagad' | 'rocket' | 'bank_transfer' | 'unknown'
   date_time?: string
   reason?: string
 }
