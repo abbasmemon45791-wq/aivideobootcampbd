@@ -2,7 +2,7 @@ $body = @{
     name = "Test User"
     email = "test@test.com"
     whatsapp = "03001234567"
-    city = "Lahore"
+    city = "Dhaka"
 } | ConvertTo-Json
 
 try {

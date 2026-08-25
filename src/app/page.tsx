@@ -1,4 +1,4 @@
-'use client'
+﻿'use client'
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -10,7 +10,7 @@ import {
   Briefcase, DollarSign, GraduationCap, Rocket, Mic
 } from 'lucide-react'
 
-// â”€â”€ Config â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Config Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const ENROLLED = 1057
 const PRICE = Number(process.env.NEXT_PUBLIC_COURSE_PRICE) || 1499
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? '8801847800664'
@@ -19,15 +19,15 @@ const YOUTUBE_EMBED = 'https://www.youtube.com/embed/oxlf7CQxPP4?rel=0&modestbra
 
 const MODULES = [
   { num: '01', title: 'Welcome to the Future', desc: 'Course ka overview, aap kya seekhenge aur build karenge, aur pure course mein kaunse tools use honge.' },
-  { num: '02', title: 'AI Ka Dimag Samjho', desc: 'AI kaise sochta aur kaam karta hai â€” prompts, context windows, aur content creation ke liye iski importance.' },
-  { num: '03', title: 'Prompt Engineering â€” Asli Game Yahan Hai', desc: 'Woh exact prompt formulas aur structures jo aapko har baar professional-quality outputs dein.' },
-  { num: '04', title: 'AI Image Generation â€” Yahan Se Maza Shuru Hota Hai', desc: 'Midjourney, Flux, Ideogram â€” bina designer ke ads aur social media ke liye stunning visuals banao.' },
-  { num: '05', title: 'AI Voice & Audio â€” Bina Mic Ke Studio Quality', desc: 'ElevenLabs, Suno, aur free tools â€” bina mic aur studio ke professional voiceovers aur music generate karo.' },
-  { num: '06', title: 'AI Video Generation â€” Lights, Camera, No Crew Needed', desc: 'Kling, Runway, Pika â€” text se high-quality cinematic videos banao. Aaj ki sab se high-demand creative skill.' },
-  { num: '07', title: 'Editing & Final Ad Assembly â€” Jahan Raw Becomes Ready', desc: 'CapCut Pro workflows, auto-subtitles, color grading, aur har platform ke liye perfect export settings.' },
-  { num: '08', title: 'Faceless AI Content Creation â€” Audience Building', desc: 'Bina chehra dikhaye apna brand banao, high-engagement reels aur videos publish karo, aur automated workflows se audience build karo.' },
-  { num: '09', title: 'Finding Clients & Freelancing â€” Portfolio to Projects', desc: 'Cold outreach scripts, portfolio presentation, pricing strategies, proposals, aur freelance projects manage karne ki proven techniques.' },
-  { num: '10', title: 'Koi Bhi Viral Video Dekho â€” Wohi Banao', desc: 'Kisi bhi viral video ko AI se reverse-engineer karo aur exact waise hi high-performing viral content banao.' },
+  { num: '02', title: 'AI Ka Dimag Samjho', desc: 'AI kaise sochta aur kaam karta hai Ã¢â‚¬â€ prompts, context windows, aur content creation ke liye iski importance.' },
+  { num: '03', title: 'Prompt Engineering Ã¢â‚¬â€ Asli Game Yahan Hai', desc: 'Woh exact prompt formulas aur structures jo aapko har baar professional-quality outputs dein.' },
+  { num: '04', title: 'AI Image Generation Ã¢â‚¬â€ Yahan Se Maza Shuru Hota Hai', desc: 'Midjourney, Flux, Ideogram Ã¢â‚¬â€ bina designer ke ads aur social media ke liye stunning visuals banao.' },
+  { num: '05', title: 'AI Voice & Audio Ã¢â‚¬â€ Bina Mic Ke Studio Quality', desc: 'ElevenLabs, Suno, aur free tools Ã¢â‚¬â€ bina mic aur studio ke professional voiceovers aur music generate karo.' },
+  { num: '06', title: 'AI Video Generation Ã¢â‚¬â€ Lights, Camera, No Crew Needed', desc: 'Kling, Runway, Pika Ã¢â‚¬â€ text se high-quality cinematic videos banao. Aaj ki sab se high-demand creative skill.' },
+  { num: '07', title: 'Editing & Final Ad Assembly Ã¢â‚¬â€ Jahan Raw Becomes Ready', desc: 'CapCut Pro workflows, auto-subtitles, color grading, aur har platform ke liye perfect export settings.' },
+  { num: '08', title: 'Faceless AI Content Creation Ã¢â‚¬â€ Audience Building', desc: 'Bina chehra dikhaye apna brand banao, high-engagement reels aur videos publish karo, aur automated workflows se audience build karo.' },
+  { num: '09', title: 'Finding Clients & Freelancing Ã¢â‚¬â€ Portfolio to Projects', desc: 'Cold outreach scripts, portfolio presentation, pricing strategies, proposals, aur freelance projects manage karne ki proven techniques.' },
+  { num: '10', title: 'Koi Bhi Viral Video Dekho Ã¢â‚¬â€ Wohi Banao', desc: 'Kisi bhi viral video ko AI se reverse-engineer karo aur exact waise hi high-performing viral content banao.' },
 ]
 
 const REVIEWS = [
@@ -56,7 +56,7 @@ const BANGLADESHI_CITIES = [
 
 
 
-// â”€â”€ Module Accordion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Module Accordion Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function ModuleAccordion() {
   const [open, setOpen] = useState<number | null>(null)
   return (
@@ -86,7 +86,7 @@ function ModuleAccordion() {
   )
 }
 
-// â”€â”€ FAQ Accordion â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ FAQ Accordion Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
   return (
@@ -109,7 +109,7 @@ function FAQ() {
   )
 }
 
-// â”€â”€ WhatsApp Mockups â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ WhatsApp Mockups Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function WhatsAppChat({ name, avatarInitial, messages }: { name: string, avatarInitial: string, messages: any[] }) {
   return (
     <div className="mx-auto w-full max-w-[320px] overflow-hidden rounded-[2.5rem] border-8 border-slate-900 bg-[#0B141A] shadow-2xl">
@@ -184,9 +184,9 @@ function WhatsAppTestimonials() {
             time: '4:13 PM',
             image: (
               <div className="flex h-48 w-full flex-col items-center justify-center bg-slate-900 text-white p-3">
-                <div className="text-[10px] font-semibold text-emerald-400 w-full text-left">âœ“ Asset Delivered</div>
+                <div className="text-[10px] font-semibold text-emerald-400 w-full text-left">Ã¢Å“â€œ Asset Delivered</div>
                 <div className="text-sm font-bold mt-2 text-center text-slate-100">AI Product Ad Campaign</div>
-                <div className="text-[10px] text-slate-400 mt-1">4K Resolution Â· Studio Lighting</div>
+                <div className="text-[10px] text-slate-400 mt-1">4K Resolution Ã‚· Studio Lighting</div>
                 <div className="mt-4 flex w-full justify-between text-[10px] bg-slate-800/80 rounded p-2">
                   <span>Status</span>
                   <span className="font-bold text-emerald-400">Client Approved</span>
@@ -197,7 +197,7 @@ function WhatsAppTestimonials() {
                 </div>
               </div>
             ),
-            text: 'Pehla AI brand ad campaign successfully complete kar ke deliver kar diya! Client ko visuals bohot pasand aye ðŸ¤—'
+            text: 'Pehla AI brand ad campaign successfully complete kar ke deliver kar diya! Client ko visuals bohot pasand aye Ã°Å¸Â¤—'
           },
           { isMe: false, time: '4:13 PM', text: 'Product lighting aur prompt engineering wale module se exact brand-level output aya.' },
           { isMe: false, time: '4:16 PM', text: 'Training was 100% practical and to the point.' },
@@ -238,9 +238,9 @@ function WhatsAppTestimonials() {
                 </div>
               </div>
             ),
-            text: 'Viral ðŸ˜'
+            text: 'Viral Ã°Å¸ËœÂ'
           },
-          { isMe: false, time: '8:50 AM', text: 'Podcast wale lecture amazing thy aur is account pe 12k followers hogye Hain with 4m views in last 28 daysðŸ’–' },
+          { isMe: false, time: '8:50 AM', text: 'Podcast wale lecture amazing thy aur is account pe 12k followers hogye Hain with 4m views in last 28 daysÃ°Å¸â€™â€“' },
           { isMe: false, time: '8:53 AM', text: 'Also working on kids content' }
         ]}
       />
@@ -248,16 +248,16 @@ function WhatsAppTestimonials() {
   )
 }
 
-// â”€â”€ Outcomes Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Outcomes Grid Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const OUTCOMES = [
-  { icon: 'ðŸ“¸', title: 'AI Product Photography', price: 'High Demand', desc: 'Studio-quality shots for any brand.' },
-  { icon: 'ðŸŽ¬', title: 'UGC Talking Ads', price: 'In-Demand Skill', desc: 'Avatars that sell on Meta & TikTok.' },
-  { icon: 'ðŸ§ ', title: 'AI Influencer Builds', price: 'Growing Market', desc: 'Faceless personas with real audience potential.' },
-  { icon: 'ðŸ›ï¸', title: 'E-com Creative Sets', price: 'Popular Service', desc: 'Full product creative kits per drop.' },
-  { icon: 'ðŸ’¬', title: 'Multi-language Ads', price: 'Global Reach', desc: 'Urdu, English, Arabic â€” one render.' },
-  { icon: 'ðŸŽ¨', title: 'Brand Style Systems', price: 'Premium Skill', desc: 'Consistent AI aesthetic per brand.' },
-  { icon: 'ðŸŽ™ï¸', title: 'AI Voiceover Reels', price: 'Quick Delivery', desc: 'Hooks + voice + visuals â€” done.' },
-  { icon: 'ðŸ“ˆ', title: 'Performance Creative', price: 'Agency-Level', desc: 'Iterative test creatives for ad spend.' },
+  { icon: 'Ã°Å¸â€œÂ¸', title: 'AI Product Photography', price: 'High Demand', desc: 'Studio-quality shots for any brand.' },
+  { icon: 'Ã°Å¸Å½Â¬', title: 'UGC Talking Ads', price: 'In-Demand Skill', desc: 'Avatars that sell on Meta & TikTok.' },
+  { icon: 'Ã°Å¸Â§Â ', title: 'AI Influencer Builds', price: 'Growing Market', desc: 'Faceless personas with real audience potential.' },
+  { icon: 'Ã°Å¸â€ºÂÃ¯Â¸Â', title: 'E-com Creative Sets', price: 'Popular Service', desc: 'Full product creative kits per drop.' },
+  { icon: 'Ã°Å¸â€™Â¬', title: 'Multi-language Ads', price: 'Global Reach', desc: 'Urdu, English, Arabic Ã¢â‚¬â€ one render.' },
+  { icon: 'Ã°Å¸Å½Â¨', title: 'Brand Style Systems', price: 'Premium Skill', desc: 'Consistent AI aesthetic per brand.' },
+  { icon: 'Ã°Å¸Å½â„¢Ã¯Â¸Â', title: 'AI Voiceover Reels', price: 'Quick Delivery', desc: 'Hooks + voice + visuals Ã¢â‚¬â€ done.' },
+  { icon: 'Ã°Å¸â€œË†', title: 'Performance Creative', price: 'Agency-Level', desc: 'Iterative test creatives for ad spend.' },
 ]
 
 function OutcomesGrid() {
@@ -285,11 +285,11 @@ function OutcomesGrid() {
   )
 }
 
-// â”€â”€ Income Potential & Roadmap â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Income Potential & Roadmap Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const INCOMES = [
   { icon: <MonitorSmartphone className="h-5 w-5 text-white" />, title: 'AI Product Photography', price: 'High Demand', desc: 'Studio-grade product shots without a studio. Local + e-commerce clients.' },
   { icon: <Mic className="h-5 w-5 text-white" />, title: 'UGC Talking Ad Videos', price: 'In-Demand', desc: 'Realistic AI avatars reading scripts for brand ads on Meta & TikTok.' },
-  { icon: <TrendingUp className="h-5 w-5 text-white" />, title: 'Monthly Brand Retainer', price: 'Recurring', desc: 'Recurring content packages â€” 8 to 30 assets per brand per month.' },
+  { icon: <TrendingUp className="h-5 w-5 text-white" />, title: 'Monthly Brand Retainer', price: 'Recurring', desc: 'Recurring content packages Ã¢â‚¬â€ 8 to 30 assets per brand per month.' },
   { icon: <Star className="h-5 w-5 text-white" />, title: 'Faceless AI Influencer', price: 'Scalable', desc: 'Build an AI persona. Brand deals, affiliate, sponsorships potential.' },
 ]
 
@@ -330,7 +330,7 @@ function IncomeAndRoadmap() {
         </div>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { day: 'PHASE 1', step: '01', title: 'Foundations', desc: 'Master the AI stack â€” prompts, tools, workflows.' },
+            { day: 'PHASE 1', step: '01', title: 'Foundations', desc: 'Master the AI stack Ã¢â‚¬â€ prompts, tools, workflows.' },
             { day: 'PHASE 2', step: '02', title: 'First Asset', desc: 'Generate your first 4K AI ad. Build your portfolio.' },
             { day: 'PHASE 3', step: '03', title: 'First Project', desc: 'Outreach templates + proposals. Connect with brands.' },
             { day: 'PHASE 4', step: '04', title: 'Scale Skills', desc: 'Deliver recurring creative sets and manage client assets.' },
@@ -350,7 +350,7 @@ function IncomeAndRoadmap() {
   )
 }
 
-// â”€â”€ Bonuses Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Bonuses Bar Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 function BonusesBar() {
   return (
     <div className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl bg-[#0F172A] p-8 text-white shadow-xl">
@@ -376,14 +376,14 @@ function BonusesBar() {
 }
 
 const SKOOL_TESTIMONIALS = [
-  { title: "First AI Ad Order", tag: "Client Work", desc: "Student ne apna pehla paid AI ad order close kiya â€” seekha hua skill direct income mein convert hua.", image: "/skool-1.png" },
-  { title: "Lectures Easy to Follow", tag: "Course Quality", desc: "Module 2 ka LLM lecture simple aur clear laga â€” beginners ke liye bhi samajhna asaan.", image: "/skool-2.png" },
-  { title: "First Realistic AI Creation", tag: "Student Result", desc: "4th lecture ke baad realistic AI visuals banane shuru â€” practical results, sirf theory nahi.", image: "/skool-3.png" },
+  { title: "First AI Ad Order", tag: "Client Work", desc: "Student ne apna pehla paid AI ad order close kiya Ã¢â‚¬â€ seekha hua skill direct income mein convert hua.", image: "/skool-1.png" },
+  { title: "Lectures Easy to Follow", tag: "Course Quality", desc: "Module 2 ka LLM lecture simple aur clear laga Ã¢â‚¬â€ beginners ke liye bhi samajhna asaan.", image: "/skool-2.png" },
+  { title: "First Realistic AI Creation", tag: "Student Result", desc: "4th lecture ke baad realistic AI visuals banane shuru Ã¢â‚¬â€ practical results, sirf theory nahi.", image: "/skool-3.png" },
   { title: "Happy to Be Part of It", tag: "Community", desc: "Long-term plan lene ke baad community mein active participation aur clear faida.", image: "/skool-4.png" },
   { title: "Mentor Support That Cares", tag: "Mentorship", desc: "Mentor guidance aur support ki wajah se students ka confidence aur speed dono barhi.", image: "/skool-5.png" },
-  { title: "2 Din Mein Hi Maza Aa Gaya", tag: "New Student", desc: "Naye student ko har lecture mein maza aa raha hai â€” kaafi kuch aisa seekha jo pehle pata hi nahi tha.", image: "/skool-6.png" },
-  { title: "Best Investment I Made This Year!", tag: "Best Investment", desc: "Sirf 2 modules dekhne ke baad student keh raha hai ye investment har penny ke qabil â€” realistic teaching ne motivation double kar di.", image: "/skool-7.png" },
-  { title: "1st Ad â€” AI Model in a Real Office", tag: "Student Result", desc: "Student ne apna pehla AI ad banaya â€” cousin ke real office mein AI model place karke professional result nikala.", image: "/skool-8.png" },
+  { title: "2 Din Mein Hi Maza Aa Gaya", tag: "New Student", desc: "Naye student ko har lecture mein maza aa raha hai Ã¢â‚¬â€ kaafi kuch aisa seekha jo pehle pata hi nahi tha.", image: "/skool-6.png" },
+  { title: "Best Investment I Made This Year!", tag: "Best Investment", desc: "Sirf 2 modules dekhne ke baad student keh raha hai ye investment har penny ke qabil Ã¢â‚¬â€ realistic teaching ne motivation double kar di.", image: "/skool-7.png" },
+  { title: "1st Ad Ã¢â‚¬â€ AI Model in a Real Office", tag: "Student Result", desc: "Student ne apna pehla AI ad banaya Ã¢â‚¬â€ cousin ke real office mein AI model place karke professional result nikala.", image: "/skool-8.png" },
   { title: "Definitely Worth the Investment", tag: "New Student", desc: "Online buying thoda risky lagta hai, lekin ye course definitely worth it hai. Abhi join kiya aur is journey ka part banke excited hun.", image: "/skool-9.png", fullWidth: true }
 ]
 
@@ -399,7 +399,7 @@ function SkoolTestimonials() {
             What Our Students Are Saying
           </h2>
           <p className="mt-4 text-sm text-slate-600 sm:text-lg max-w-2xl mx-auto leading-relaxed">
-            Ye sab posts hamari private Skool community se hain â€” <span className="font-semibold text-slate-900">726+ AI creators</span> ke real results aur experiences.
+            Ye sab posts hamari private Skool community se hain Ã¢â‚¬â€ <span className="font-semibold text-slate-900">726+ AI creators</span> ke real results aur experiences.
           </p>
         </div>
 
@@ -429,7 +429,7 @@ function SkoolTestimonials() {
   )
 }
 
-// â”€â”€ Who Is This For â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Who Is This For Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 const AUDIENCES = [
   { icon: <Sparkles className="h-5 w-5 text-white" />, title: 'Beginner', desc: 'Zero experience? Start here. Roman Urdu friendly.' },
   { icon: <Briefcase className="h-5 w-5 text-white" />, title: 'Freelancer', desc: 'Add AI tools to your stack and offer creative services.' },
@@ -448,7 +448,7 @@ function WhoIsThisFor() {
             Who It's For
           </div>
           <h2 className="mt-4 font-['Sora'] text-3xl font-bold tracking-tight md:-tracking-[0.02em] text-slate-900 sm:text-4xl">
-            If any of these is you â€” you're in
+            If any of these is you Ã¢â‚¬â€ you're in
           </h2>
         </div>
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -467,7 +467,7 @@ function WhoIsThisFor() {
   )
 }
 
-// â”€â”€ Main Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Ã¢â€â‚¬Ã¢â€â‚¬ Main Page Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬Ã¢â€â‚¬
 export default function HomePage() {
   const [headerScrolled, setHeaderScrolled] = useState(false)
   const enrollRef = useRef<HTMLDivElement>(null)
@@ -491,7 +491,7 @@ export default function HomePage() {
         else if (ref.includes('youtube')) localStorage.setItem('lead_source', 'youtube')
       }
 
-      // Capture click IDs â€” most precise attribution signal from each ad platform
+      // Capture click IDs Ã¢â‚¬â€ most precise attribution signal from each ad platform
       // Only store on first touch; never overwrite (preserve the original paid click)
       const gclid = params.get('gclid')
       if (gclid && !localStorage.getItem('lead_gclid')) {
@@ -514,7 +514,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-slate-800">
-      {/* â”€â”€ Header â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Header Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <header className={`sticky top-0 z-40 transition-all duration-300 ${headerScrolled ? 'shadow-sm' : ''} border-b border-slate-200/60 bg-white/85 backdrop-blur-xl`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-4 py-2.5 sm:px-6">
           <a href="#top" className="flex items-center gap-2.5">
@@ -540,16 +540,16 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* â”€â”€ Hero â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Hero Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section id="top" className="hero-bg relative overflow-hidden dot-grid">
         <div className="mx-auto max-w-6xl px-4 pb-6 pt-8 text-center sm:px-6 sm:pb-8 sm:pt-12 md:pt-10">
 
           <span className="inline-flex items-center gap-2 rounded-full border border-blue-200/60 bg-white/80 px-3 py-1.5 text-[11px] font-semibold text-blue-700 shadow-sm backdrop-blur sm:text-xs">
-            ðŸŽ“ Structured AI Skills Course Â· 10 Modules
+            Ã°Å¸Å½â€œ Structured AI Skills Course Ã‚· 10 Modules
           </span>
 
           <h1 className="mx-auto mt-3 max-w-4xl text-balance font-['Sora'] text-[28px] font-bold leading-[1.15] tracking-tight md:-tracking-[0.02em] text-slate-900 sm:text-4xl md:text-5xl">
-            Learn <span className="text-gradient">AI Content Creation</span> â€” From Zero to Professional
+            Learn <span className="text-gradient">AI Content Creation</span> Ã¢â‚¬â€ From Zero to Professional
           </h1>
 
           <p className="mx-auto mt-4 max-w-2xl text-balance text-sm leading-relaxed text-slate-500 sm:text-base">
@@ -558,7 +558,7 @@ export default function HomePage() {
 
           {/* <div className="mt-2 flex justify-center">
             <span className="inline-flex items-center gap-1.5 rounded-full border border-blue-200/50 bg-blue-50 px-3 py-1 text-[11px] font-semibold text-blue-700">
-              <span className="animate-bounce">ðŸ‘‡</span> Watch the 3-minute intro below
+              <span className="animate-bounce">Ã°Å¸â€˜â€¡</span> Watch the 3-minute intro below
             </span>
           </div>
 
@@ -567,7 +567,7 @@ export default function HomePage() {
               <iframe
                 className="absolute inset-0 h-full w-full"
                 src={YOUTUBE_EMBED}
-                title="AI Video Bootcamp â€” Bangladesh"
+                title="AI Video Bootcamp Ã¢â‚¬â€ Bangladesh"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen"
                 allowFullScreen
               />
@@ -580,7 +580,7 @@ export default function HomePage() {
               href="/enroll"
               className="btn-premium inline-flex w-full items-center justify-center gap-2 rounded-full px-7 py-3 text-sm font-semibold text-white sm:w-auto sm:text-base"
             >
-              Enroll Now â€” ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+              Enroll Now Ã¢â‚¬â€ à§³{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
             </Link>
             <a
               href="#modules"
@@ -604,7 +604,7 @@ export default function HomePage() {
             {[
               { val: '10', label: 'Modules' },
               { val: 'Learn at your own Pace', label: '' },
-              { val: `৳${PRICE.toLocaleString()}`, label: 'Today Only' },
+              { val: `à§³${PRICE.toLocaleString()}`, label: 'Today Only' },
             ].map((s, i) => (
               <div key={i} className="flex flex-col items-center justify-center bg-white px-4 py-4 text-center">
                 <div className="text-gradient font-['Sora'] text-sm font-bold leading-tight sm:text-xl md:text-2xl">{s.val}</div>
@@ -619,27 +619,27 @@ export default function HomePage() {
               <CheckCircle className="h-3.5 w-3.5" /> All sessions recorded
             </span>
             <span className="inline-flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-semibold text-slate-700">
-              ðŸŽ“ Hosted on Skool
+              Ã°Å¸Å½â€œ Hosted on Skool
             </span>
           </div>
         </div>
       </section>
 
-      {/* â”€â”€ Community Section â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Community Section Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section className="px-4 pt-8 pb-14 sm:px-6 sm:pt-10 sm:pb-20">
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-['Sora'] text-2xl font-bold text-slate-900 sm:text-3xl md:text-4xl">
             Inside the <span className="text-gradient">AI Bootcamp BD</span> Skool Community
           </h2>
           <p className="mt-2 text-sm text-slate-500 sm:text-base">
-            Join over 1.1k membe৳Unlock courses, climb the leaderboards to win prizes, and network with Bangladesh's top AI creato৳
+            Join over 1.1k membeà§³Unlock courses, climb the leaderboards to win prizes, and network with Bangladesh's top AI creatoà§³
           </p>
           <div className="mx-auto mt-10 max-w-4xl overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
             <Image src="/community.png" alt="AI Bootcamp BD Skool Community" width={1200} height={800} className="w-full h-auto object-cover" />
           </div>
           <div className="mt-5 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Link href="/enroll" className="btn-premium inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3 text-base font-semibold text-white sm:w-auto">
-              Enroll Now â€” ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+              Enroll Now Ã¢â‚¬â€ à§³{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
             </Link>
             <a href="#reviews" className="inline-flex w-full items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-6 py-3 text-base font-semibold text-slate-700 hover:bg-slate-50 sm:w-auto">
               Read Reviews <ArrowDown className="h-5 w-5" />
@@ -648,25 +648,25 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ Marquee â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Marquee Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <div className="gradient-brand overflow-hidden border-y border-blue-400/30 py-3 text-white">
         <div className="flex w-max animate-marquee gap-10 whitespace-nowrap text-sm font-semibold">
           {[...Array(3)].flatMap(() => [
-            `âœ¦ ৳${PRICE.toLocaleString()} One-Time Payment`,
-            `âœ¦ ${ENROLLED}+ Students Enrolled`,
-            'âœ¦ 10 Complete Video Modules',
-            'âœ¦ Lifetime Access Included',
-            'âœ¦ Free Bonus Tools & Templates',
-            'âœ¦ 4-Module Refund Policy',
+            `Ã¢Å“Â¦ à§³${PRICE.toLocaleString()} One-Time Payment`,
+            `Ã¢Å“Â¦ ${ENROLLED}+ Students Enrolled`,
+            'Ã¢Å“Â¦ 10 Complete Video Modules',
+            'Ã¢Å“Â¦ Lifetime Access Included',
+            'Ã¢Å“Â¦ Free Bonus Tools & Templates',
+            'Ã¢Å“Â¦ 4-Module Refund Policy',
           ]).map((item, i) => (
             <span key={i} className="inline-flex items-center gap-3">
-              {item} <span className="opacity-40">â€¢</span>
+              {item} <span className="opacity-40">Ã¢â‚¬Â¢</span>
             </span>
           ))}
         </div>
       </div>
 
-      {/* â”€â”€ Enrollment Pricing Card â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Enrollment Pricing Card Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section ref={enrollRef} id="enroll" className="px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-3xl">
           <div className="relative overflow-hidden rounded-3xl border border-blue-200/60 bg-white p-8 shadow-glow sm:p-12">
@@ -679,10 +679,10 @@ export default function HomePage() {
 
               <div className="mt-5 flex flex-col sm:flex-row sm:items-baseline gap-2">
                 <div className="font-['Sora'] text-5xl font-extrabold tracking-tight text-slate-900 sm:text-6xl">
-                  ৳{PRICE.toLocaleString()}
+                  à§³{PRICE.toLocaleString()}
                 </div>
                 <div className="text-sm font-semibold text-slate-500">
-                  One-time payment Â· No hidden fees Â· Lifetime access
+                  One-time payment Ã‚· No hidden fees Ã‚· Lifetime access
                 </div>
               </div>
 
@@ -694,17 +694,17 @@ export default function HomePage() {
                 href="/enroll"
                 className="btn-premium mt-8 inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 text-base font-semibold text-white"
               >
-                Enroll Now â€” ৳{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
+                Enroll Now Ã¢â‚¬â€ à§³{PRICE.toLocaleString()} <ArrowRight className="h-5 w-5" />
               </Link>
 
               <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-500">
-                <Lock className="h-3.5 w-3.5 text-blue-600" /> Secure checkout Â· 100% Refund Policy Included
+                <Lock className="h-3.5 w-3.5 text-blue-600" /> Secure checkout Ã‚· 100% Refund Policy Included
               </p>
 
               {/* What's included */}
               <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
                 {[
-                  { icon: <Wallet className="h-5 w-5 text-blue-600" />, label: 'Course Fee', val: `৳${PRICE.toLocaleString()}` },
+                  { icon: <Wallet className="h-5 w-5 text-blue-600" />, label: 'Course Fee', val: `à§³${PRICE.toLocaleString()}` },
                   { icon: <Clock className="h-5 w-5 text-blue-600" />, label: 'Duration', val: '10 Hours' },
                   { icon: <Infinity className="h-5 w-5 text-blue-600" />, label: 'Access', val: 'Lifetime' },
                   { icon: <RefreshCw className="h-5 w-5 text-blue-600" />, label: 'Updates', val: 'Free Forever' },
@@ -728,7 +728,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ Success Stories â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Success Stories Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section className="px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -745,7 +745,7 @@ export default function HomePage() {
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { stat: '4K Studio', desc: 'Commercial product photography created with matched lighting & shadows.', tag: 'AI Product Shoot' },
-              { stat: '2.8M Views', desc: 'Organic reach on a single AI podcast video with custom voiceove৳', tag: 'Content Reach' },
+              { stat: '2.8M Views', desc: 'Organic reach on a single AI podcast video with custom voiceoveà§³', tag: 'Content Reach' },
               { stat: 'Client-Ready', desc: 'Brand-ready video ads and portfolio assets delivered for live campaigns.', tag: 'Client Projects' },
             ].map((story, i) => (
               <div key={i} className="overflow-hidden rounded-2xl border border-slate-200/60 bg-white/60 backdrop-blur-md p-6 shadow-glass card-premium-hover">
@@ -759,7 +759,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ Modules â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Modules Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section id="modules" className="bg-slate-50 px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-4xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -781,9 +781,9 @@ export default function HomePage() {
           <div className="mt-6 overflow-hidden rounded-2xl border-2 border-blue-200 bg-gradient-to-r from-blue-50 to-cyan-50 p-6">
             <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-center">
               <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-blue-600">ðŸŽ Bonus Module</div>
+                <div className="text-xs font-bold uppercase tracking-wider text-blue-600">Ã°Å¸Å½Â Bonus Module</div>
                 <h4 className="mt-1 font-['Sora'] text-xl font-bold text-slate-900">Hidden Methods to Access Paid Tools for Free</h4>
-                <p className="mt-1 text-sm text-slate-500">Legal workflows to unlock premium AI tools â€” Midjourney, ElevenLabs, Runway â€” at zero cost.</p>
+                <p className="mt-1 text-sm text-slate-500">Legal workflows to unlock premium AI tools Ã¢â‚¬â€ Midjourney, ElevenLabs, Runway Ã¢â‚¬â€ at zero cost.</p>
               </div>
               <div className="text-right shrink-0">
                 <div className="text-sm font-medium text-slate-400 line-through">$50 value</div>
@@ -794,7 +794,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ Reviews â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Reviews Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section id="reviews" className="px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-5xl">
           <div className="mx-auto max-w-3xl text-center">
@@ -805,7 +805,7 @@ export default function HomePage() {
               What Our Students Say
             </h2>
             <p className="mt-2 text-sm text-slate-500 sm:text-base">
-              {ENROLLED}+ AI creators â€” real results, real experiences.
+              {ENROLLED}+ AI creators Ã¢â‚¬â€ real results, real experiences.
             </p>
           </div>
           <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -833,7 +833,7 @@ export default function HomePage() {
 
       <WhoIsThisFor />
 
-      {/* â”€â”€ FAQ â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ FAQ Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section className="bg-slate-50 px-4 py-10 sm:px-6 sm:py-16">
         <div className="mx-auto max-w-3xl">
           <div className="text-center">
@@ -848,10 +848,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* â”€â”€ Skool Testimonials â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Skool Testimonials Ã¢â€â‚¬Ã¢â€â‚¬ */}
       {/* <SkoolTestimonials /> */}
 
-      {/* â”€â”€ Final CTA â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Final CTA Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <section className="bg-[#0F172A] px-4 py-10 text-white sm:px-6 sm:py-16">
         <div className="mx-auto max-w-4xl text-center">
           <Clock className="mx-auto h-8 w-8 mb-6 text-cyan-400" />
@@ -874,7 +874,7 @@ export default function HomePage() {
             Start <span className="text-blue-500">today.</span>
           </h2>
           <p className="mt-4 text-sm text-slate-500 sm:text-base max-w-md mx-auto">
-            ৳{PRICE.toLocaleString()} one-time. Lifetime access. Money-back guarantee â€” see our <Link href="/terms" className="underline hover:text-blue-400">refund policy</Link>.
+            à§³{PRICE.toLocaleString()} one-time. Lifetime access. Money-back guarantee Ã¢â‚¬â€ see our <Link href="/terms" className="underline hover:text-blue-400">refund policy</Link>.
           </p>
           <Link
             href="/enroll"
@@ -891,11 +891,11 @@ export default function HomePage() {
           <strong>Educational Disclaimer:</strong> AI Bootcamp Bangladesh is a digital educational training service. Results depend on individual effort, skill level, practice, and market conditions. We do not guarantee any specific income, earnings, or financial outcomes. See our <Link href="/terms" className="underline hover:text-slate-700">Terms of Service</Link>, <Link href="/privacy" className="underline hover:text-slate-700">Privacy Policy</Link>, and <Link href="/refund" className="underline hover:text-slate-700">Refund Policy</Link> for details.
         </p>
         <p className="mx-auto max-w-4xl text-center text-[10px] leading-relaxed text-slate-400">
-          <strong>Trademark Notice:</strong> All product names, logos, brands, and trademarks (including Midjourney, ElevenLabs, Runway, Kling, Suno, CapCut) are property of their respective owne৳AI Bootcamp Bangladesh is an independent educational program and is not affiliated with, endorsed by, or sponsored by these entities.
+          <strong>Trademark Notice:</strong> All product names, logos, brands, and trademarks (including Midjourney, ElevenLabs, Runway, Kling, Suno, CapCut) are property of their respective owneà§³AI Bootcamp Bangladesh is an independent educational program and is not affiliated with, endorsed by, or sponsored by these entities.
         </p>
       </div>
 
-      {/* â”€â”€ Footer â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Footer Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <footer className="border-t border-slate-200 bg-slate-900 px-4 py-10 text-white/70 sm:px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
@@ -912,14 +912,14 @@ export default function HomePage() {
             <Link href="/terms" className="text-white/60 hover:text-white transition-colors">Terms of Service</Link>
             <Link href="/refund" className="text-white/60 hover:text-white transition-colors">Refund Policy</Link>
             <Link href="/contact" className="text-white/60 hover:text-white transition-colors">Contact Us</Link>
-            <a href="https://instagram.com/aivideobootcamppk" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">Instagram</a>
+            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">Instagram</a>
             <a href={`https://wa.me/${WHATSAPP_NUMBER}`} target="_blank" rel="noopener noreferrer" className="text-white/60 hover:text-white transition-colors">WhatsApp</a>
           </div>
-          <div className="text-xs text-white/40">Â© 2026 AI Bootcamp Bangladesh. All rights reserved.</div>
+          <div className="text-xs text-white/40">Ã‚© 2026 AI Bootcamp Bangladesh. All rights reserved.</div>
         </div>
       </footer>
 
-      {/* â”€â”€ Floating WhatsApp â”€â”€ */}
+      {/* Ã¢â€â‚¬Ã¢â€â‚¬ Floating WhatsApp Ã¢â€â‚¬Ã¢â€â‚¬ */}
       <a
         href={`https://wa.me/${WHATSAPP_NUMBER}`}
         target="_blank"
@@ -936,4 +936,5 @@ export default function HomePage() {
     </div>
   )
 }
+
 
