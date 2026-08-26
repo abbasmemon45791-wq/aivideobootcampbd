@@ -153,56 +153,7 @@ export async function POST(req: NextRequest) {
   if (action === 'approve' && lead) {
     const transactionId = `lead_${leadId}_${Date.now()}`
 
-    // ── 1. GA4 Measurement Protocol (server-side) ─────────────────────────
-    // This is guaranteed delivery — no ad blockers, no page-load timing issues.
-    // Uses the real browser GA client_id (or fallback) + gclid so Google Ads attributes the conversion.
-    try {
-      const GA4_ID     = process.env.NEXT_PUBLIC_GA4_ID || 'G-Y2SZLNREPD'
-      const API_SECRET = process.env.GA4_API_SECRET || 'ZCnSzNHmT5Cte3cAOZ8rVQ'
-
-      const gaClientIdFromUtm = lead.utm_content?.match(/\[ga:([^\]]+)\]/)?.[1]
-      const resolvedClientId = lead.ga_client_id || gaClientIdFromUtm || (lead.email ? hashData(lead.email.toLowerCase().trim()).slice(0, 20) : `admin_${Date.now()}`)
-
-      if (GA4_ID && API_SECRET) {
-        await fetch(
-          `https://www.google-analytics.com/mp/collect?measurement_id=${GA4_ID}&api_secret=${API_SECRET}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              client_id: resolvedClientId,
-              events: [{
-                name: 'purchase',
-                params: {
-                  transaction_id: transactionId,
-                  value: coursePrice,
-                  currency: 'BDT',
-                  ...(lead.gclid && { gclid: lead.gclid }),
-                  items: [{
-                    item_id:   'ai-bootcamp-bd',
-                    item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Bangladesh',
-                    price:     coursePrice,
-                    quantity:  1,
-                  }],
-                },
-              }],
-              // Enhanced measurement user properties
-              ...(lead.email && {
-                user_properties: {
-                  email: { value: lead.email },
-                },
-              }),
-            }),
-          }
-        )
-      } else {
-        console.warn('[Admin Approve] GA4 Measurement Protocol skipped — NEXT_PUBLIC_GA4_ID or GA4_API_SECRET not set.')
-      }
-    } catch (ga4Err) {
-      console.error('[Admin Approve] GA4 Measurement Protocol error:', ga4Err)
-    }
-
-    // ── 2. Facebook CAPI Purchase (server-side, Dual-Pixel supported) ──────
+    // ── Facebook CAPI Purchase (server-side, Dual-Pixel supported) ──────
     try {
       const pixelConfigs = [
         { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },

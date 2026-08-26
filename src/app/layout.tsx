@@ -21,9 +21,6 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  // GA4 Measurement ID
-  const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || ''
-
   return (
     <html lang="bn" className={`${inter.variable} ${sora.variable} ${jakarta.variable} ${hind.variable}`}>
       <body className="font-[var(--font-hind),Inter,sans-serif] antialiased">
@@ -41,25 +38,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             ${process.env.NEXT_PUBLIC_FB_PIXEL_ID ? `fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');` : ''}
             ${process.env.NEXT_PUBLIC_FB_PIXEL_ID_2 ? `fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID_2}');` : ''}
             fbq('track', 'PageView');
-          `}
-        </Script>
-
-        {/* Google Analytics 4 — gtag.js */}
-        {GA4_ID && (
-          <Script
-            src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}
-            strategy="afterInteractive"
-          />
-        )}
-        <Script id="ga4-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA4_ID}', {
-              allow_enhanced_conversions: true,
-              send_page_view: true
-            });
           `}
         </Script>
 

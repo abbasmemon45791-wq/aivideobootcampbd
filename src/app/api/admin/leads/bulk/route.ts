@@ -84,50 +84,6 @@ export async function POST(req: NextRequest) {
             // ── Conversion events for each approved lead ──
             const transactionId = `lead_${l.id}_${Date.now()}`
 
-            // GA4 Measurement Protocol
-            try {
-              const GA4_ID     = process.env.NEXT_PUBLIC_GA4_ID || 'G-Y2SZLNREPD'
-              const API_SECRET = process.env.GA4_API_SECRET || 'ZCnSzNHmT5Cte3cAOZ8rVQ'
-
-              const gaClientIdFromUtm = l.utm_content?.match(/\[ga:([^\]]+)\]/)?.[1]
-              const resolvedClientId = l.ga_client_id || gaClientIdFromUtm || (l.email ? hashData(l.email.toLowerCase().trim()).slice(0, 20) : `admin_${Date.now()}`)
-
-              if (GA4_ID && API_SECRET) {
-                await fetch(
-                  `https://www.google-analytics.com/mp/collect?measurement_id=${GA4_ID}&api_secret=${API_SECRET}`,
-                  {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                      client_id: resolvedClientId,
-                      events: [{
-                        name: 'purchase',
-                        params: {
-                          transaction_id: transactionId,
-                          value: coursePrice,
-                          currency: 'BDT',
-                          ...(l.gclid && { gclid: l.gclid }),
-                          items: [{
-                            item_id:   'ai-bootcamp-bd',
-                            item_name: process.env.COURSE_NAME || 'AI Video Bootcamp Bangladesh',
-                            price:     coursePrice,
-                            quantity:  1,
-                          }],
-                        },
-                      }],
-                      ...(l.email && {
-                        user_properties: {
-                          email: { value: l.email },
-                        },
-                      }),
-                    }),
-                  }
-                )
-              }
-            } catch (ga4Err) {
-              console.error('[Bulk Approve] GA4 error:', ga4Err)
-            }
-
             // Meta CAPI (Dual-Pixel supported)
             try {
               const pixelConfigs = [
