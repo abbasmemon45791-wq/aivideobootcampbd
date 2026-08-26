@@ -26,7 +26,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} ${jakarta.variable}`}>
       <body className="font-[Inter,sans-serif] antialiased">
-        {/* Meta Pixel */}
+        {/* Meta Pixel (Dual-Pixel: Primary & Secondary / Backup) */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`
             !function(f,b,e,v,n,t,s)
@@ -37,7 +37,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             t.src=v;s=b.getElementsByTagName(e)[0];
             s.parentNode.insertBefore(t,s)}(window, document,'script',
             'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID ?? ''}');
+            ${process.env.NEXT_PUBLIC_FB_PIXEL_ID ? `fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID}');` : ''}
+            ${process.env.NEXT_PUBLIC_FB_PIXEL_ID_2 ? `fbq('init', '${process.env.NEXT_PUBLIC_FB_PIXEL_ID_2}');` : ''}
             fbq('track', 'PageView');
           `}
         </Script>

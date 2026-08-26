@@ -83,45 +83,50 @@ export async function POST(req: NextRequest) {
     const { data, error } = insertRes
     if (error) throw error
 
-    // Send Facebook CAPI Lead Event
+    // Send Facebook CAPI Lead Event (Dual-Pixel supported)
     try {
-      const PIXEL_ID = process.env.NEXT_PUBLIC_FB_PIXEL_ID
-      const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN
-      if (PIXEL_ID && ACCESS_TOKEN) {
+      const pixelConfigs = [
+        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },
+        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID_2, accessToken: process.env.META_ACCESS_TOKEN_2 || process.env.META_ACCESS_TOKEN },
+      ].filter((p): p is { pixelId: string; accessToken: string } => Boolean(p.pixelId && p.accessToken))
+
+      if (pixelConfigs.length > 0) {
         const hashedEmail = hashData(email.toLowerCase().trim())
         // Extract only digits for phone hash per FB specs (include country code, no + or -)
         const digitsOnly = whatsapp.replace(/\D/g, '')
         const hashedPhone = digitsOnly ? hashData(digitsOnly) : undefined
-        
-        await fetch(`https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            data: [
-              {
-                event_name: 'Lead',
-                event_time: Math.floor(Date.now() / 1000),
-                action_source: 'website',
-                event_source_url: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com.bd'}/enroll`,
-                // event_id matches the browser fbq() call — Meta deduplicates automatically
-                ...(eventId && { event_id: eventId }),
-                user_data: {
-                  em: [hashedEmail],
-                  ...(hashedPhone && { ph: [hashedPhone] }),
-                  client_ip_address: ip,
-                  client_user_agent: req.headers.get('user-agent') ?? '',
-                  // _fbc/_fbp cookies — highest-quality signal for matching CAPI events to ad clicks
-                  ...(fbc && { fbc }),
-                  ...(fbp && { fbp }),
-                },
-                custom_data: {
-                  currency: 'BDT',
-                  value: (process.env.COURSE_PRICE && process.env.COURSE_PRICE !== '1499' ? Number(process.env.COURSE_PRICE) : 799),
-                },
-              }
-            ]
-          })
-        })
+
+        for (const { pixelId, accessToken } of pixelConfigs) {
+          await fetch(`https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              data: [
+                {
+                  event_name: 'Lead',
+                  event_time: Math.floor(Date.now() / 1000),
+                  action_source: 'website',
+                  event_source_url: `${process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com.bd'}/enroll`,
+                  // event_id matches the browser fbq() call — Meta deduplicates automatically
+                  ...(eventId && { event_id: eventId }),
+                  user_data: {
+                    em: [hashedEmail],
+                    ...(hashedPhone && { ph: [hashedPhone] }),
+                    client_ip_address: ip,
+                    client_user_agent: req.headers.get('user-agent') ?? '',
+                    // _fbc/_fbp cookies — highest-quality signal for matching CAPI events to ad clicks
+                    ...(fbc && { fbc }),
+                    ...(fbp && { fbp }),
+                  },
+                  custom_data: {
+                    currency: 'BDT',
+                    value: (process.env.COURSE_PRICE && process.env.COURSE_PRICE !== '1499' ? Number(process.env.COURSE_PRICE) : 799),
+                  },
+                }
+              ]
+            })
+          }).catch(err => console.error(`FB CAPI Error (Lead) for pixel ${pixelId}:`, err))
+        }
       }
     } catch (fbErr) {
       console.error('FB CAPI Error (Lead):', fbErr)

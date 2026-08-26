@@ -202,40 +202,44 @@ export async function POST(req: NextRequest) {
       console.error('[Admin Approve] GA4 Measurement Protocol error:', ga4Err)
     }
 
-    // ── 2. Facebook CAPI Purchase (server-side) ────────────────────────────
+    // ── 2. Facebook CAPI Purchase (server-side, Dual-Pixel supported) ──────
     try {
-      const PIXEL_ID     = process.env.NEXT_PUBLIC_FB_PIXEL_ID
-      const ACCESS_TOKEN = process.env.META_ACCESS_TOKEN
+      const pixelConfigs = [
+        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },
+        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID_2, accessToken: process.env.META_ACCESS_TOKEN_2 || process.env.META_ACCESS_TOKEN },
+      ].filter((p): p is { pixelId: string; accessToken: string } => Boolean(p.pixelId && p.accessToken))
 
-      if (PIXEL_ID && ACCESS_TOKEN && lead.email) {
+      if (pixelConfigs.length > 0 && lead.email) {
         const hashedEmail = hashData(lead.email.toLowerCase().trim())
         const digitsOnly  = lead.whatsapp?.replace(/\D/g, '')
         const hashedPhone = digitsOnly ? hashData(digitsOnly) : undefined
 
-        await fetch(
-          `https://graph.facebook.com/v19.0/${PIXEL_ID}/events?access_token=${ACCESS_TOKEN}`,
-          {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              data: [{
-                event_name:        'Purchase',
-                event_time:        Math.floor(Date.now() / 1000),
-                action_source:     'other',  // 'other' = offline/server-side (not from browser)
-                event_source_url:  `${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/enroll`,
-                event_id:          transactionId,
-                user_data: {
-                  em: [hashedEmail],
-                  ...(hashedPhone && { ph: [hashedPhone] }),
-                },
-                custom_data: {
-                  currency: 'BDT',
-                  value:    coursePrice,
-                },
-              }],
-            }),
-          }
-        )
+        for (const { pixelId, accessToken } of pixelConfigs) {
+          await fetch(
+            `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                data: [{
+                  event_name:        'Purchase',
+                  event_time:        Math.floor(Date.now() / 1000),
+                  action_source:     'other',  // 'other' = offline/server-side (not from browser)
+                  event_source_url:  `${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/enroll`,
+                  event_id:          transactionId,
+                  user_data: {
+                    em: [hashedEmail],
+                    ...(hashedPhone && { ph: [hashedPhone] }),
+                  },
+                  custom_data: {
+                    currency: 'BDT',
+                    value:    coursePrice,
+                  },
+                }],
+              }),
+            }
+          ).catch(err => console.error(`[Admin Approve] FB CAPI error for pixel ${pixelId}:`, err))
+        }
       }
     } catch (fbErr) {
       console.error('[Admin Approve] FB CAPI error:', fbErr)
