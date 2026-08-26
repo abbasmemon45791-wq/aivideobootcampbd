@@ -13,7 +13,7 @@ const VALID_RECIPIENT_NUMBERS = [
 
 const ACCOUNT_NAME = (process.env.NEXT_PUBLIC_BKASH_ACCOUNT_NAME ?? 'The Patchee BD').toLowerCase()
 
-const COURSE_PRICE = parseInt(process.env.COURSE_PRICE ?? '799')
+const COURSE_PRICE = (process.env.COURSE_PRICE && process.env.COURSE_PRICE !== '1499') ? parseInt(process.env.COURSE_PRICE) : 799
 const PRICE_TOLERANCE_LOW  = COURSE_PRICE - 150   // e.g. 649
 const PRICE_TOLERANCE_HIGH = COURSE_PRICE + 500   // e.g. 1299
 

@@ -7,7 +7,7 @@ import {
   AlertCircle, CheckCircle, MessageCircle, Star
 } from 'lucide-react'
 
-const COURSE_PRICE     = Number(process.env.NEXT_PUBLIC_COURSE_PRICE) || 799
+const COURSE_PRICE     = 799
 const BKASH_NUMBER     = process.env.NEXT_PUBLIC_BKASH_NUMBER        ?? '01896195441'
 const BKASH_NAME       = 'The Patchee BD'
 const WHATSAPP_SUPPORT = process.env.NEXT_PUBLIC_WHATSAPP_SUPPORT    ?? '8801847800664'
