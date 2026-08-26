@@ -7,7 +7,7 @@ import {
   AlertCircle, CheckCircle, MessageCircle, Star
 } from 'lucide-react'
 
-const COURSE_PRICE     = Number(process.env.NEXT_PUBLIC_COURSE_PRICE) || 1499
+const COURSE_PRICE     = Number(process.env.NEXT_PUBLIC_COURSE_PRICE) || 799
 const BKASH_NUMBER     = process.env.NEXT_PUBLIC_BKASH_NUMBER        ?? '01896195441'
 const BKASH_NAME       = 'The Patchee BD'
 const WHATSAPP_SUPPORT = process.env.NEXT_PUBLIC_WHATSAPP_SUPPORT    ?? '8801847800664'
@@ -158,7 +158,7 @@ function Step1({ onDone }: { onDone: (leadId: string, data: { name: string; emai
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         Reserve Your Seat.
       </h2>
-      <p className="text-sm font-semibold text-blue-600">Enroll before price increases to ৳{(COURSE_PRICE * 2.5).toLocaleString()}</p>
+      <p className="text-sm font-semibold text-blue-600">Enroll before price increases to ৳{Math.round(COURSE_PRICE * 2.5).toLocaleString()}</p>
 
       <div className="mt-4 space-y-3">
         <label className="block">

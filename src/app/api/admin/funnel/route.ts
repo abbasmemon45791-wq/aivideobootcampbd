@@ -71,7 +71,7 @@ export async function GET(req: NextRequest) {
         totalRevenue += Number(p.amount)
       } else {
         // Fallback if payment record had no custom amount
-        totalRevenue += Number(process.env.COURSE_PRICE) || 1499
+        totalRevenue += Number(process.env.COURSE_PRICE) || 799
       }
     })
 

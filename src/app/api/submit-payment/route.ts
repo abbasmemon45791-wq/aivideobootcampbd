@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    const coursePrice = Number(amount) || Number(process.env.COURSE_PRICE) || 1499
+    const coursePrice = Number(amount) || Number(process.env.COURSE_PRICE) || 799
 
     // Insert payment record
     const { error: paymentError } = await supabaseAdmin

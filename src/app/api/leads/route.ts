@@ -116,7 +116,7 @@ export async function POST(req: NextRequest) {
                 },
                 custom_data: {
                   currency: 'BDT',
-                  value: Number(process.env.COURSE_PRICE) || 1499,
+                  value: Number(process.env.COURSE_PRICE) || 799,
                 },
               }
             ]

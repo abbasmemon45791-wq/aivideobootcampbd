@@ -187,7 +187,7 @@ function LeadRow({ lead, token, onUpdate, isSelected, onToggleSelect }: { lead: 
               {badge.icon} {badge.label}
             </span>
             <span className="inline-flex items-center gap-1 rounded-md px-1.5 py-0.5 text-[10px] font-bold bg-pink-50 text-pink-700 border border-pink-200">
-              bKash · ৳1,499
+              bKash · ৳799
             </span>
           </div>
           <div className="mt-1 flex flex-wrap gap-x-2 gap-y-1 text-xs text-slate-500">
@@ -477,7 +477,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
               style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>AI</div>
             <div>
               <div className="text-sm font-bold text-slate-900">Admin Dashboard</div>
-              <div className="text-[11px] font-semibold text-blue-600">AI Video Bootcamp Bangladesh (bKash · ৳1,499)</div>
+              <div className="text-[11px] font-semibold text-blue-600">AI Video Bootcamp Bangladesh (bKash · ৳799)</div>
             </div>
           </div>
           <div className="flex items-center gap-2">

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     title: 'AI Video Bootcamp Bangladesh',
-    description: 'Learn practical AI video generation and creative workflows. BDT ৳1,499 one-time payment. Lifetime access.',
+    description: 'Learn practical AI video generation and creative workflows. BDT ৳799 one-time payment. Lifetime access.',
   },
   twitter: { card: 'summary_large_image' },
 }
