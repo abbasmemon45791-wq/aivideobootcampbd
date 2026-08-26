@@ -1,15 +1,16 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
-import { Inter, Sora, Plus_Jakarta_Sans } from 'next/font/google'
+import { Inter, Sora, Plus_Jakarta_Sans, Hind_Siliguri } from 'next/font/google'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const sora = Sora({ subsets: ['latin'], variable: '--font-sora', weight: ['400','600','700','800'] })
 const jakarta = Plus_Jakarta_Sans({ subsets: ['latin'], variable: '--font-jakarta', weight: ['500','600','700'] })
+const hind = Hind_Siliguri({ subsets: ['bengali', 'latin'], weight: ['400', '500', '600', '700'], variable: '--font-hind' })
 
 export const metadata: Metadata = {
   title: 'AI Video Bootcamp Bangladesh — Practical AI Content Creation Course',
-  description: "Practical AI creator training in Bangladesh. Master AI video generation, prompt engineering, product photography, and creative workflows. 10 structured modules.",
+  description: 'Learn practical AI content creation in Bangladesh. Master AI video generation, prompt engineering, product photography, and creative workflows. 10 structured modules.',
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? 'https://yourdomain.com.bd'),
   openGraph: {
     type: 'website',
@@ -24,8 +25,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID || ''
 
   return (
-    <html lang="en" className={`${inter.variable} ${sora.variable} ${jakarta.variable}`}>
-      <body className="font-[Inter,sans-serif] antialiased">
+    <html lang="bn" className={`${inter.variable} ${sora.variable} ${jakarta.variable} ${hind.variable}`}>
+      <body className="font-[var(--font-hind),Inter,sans-serif] antialiased">
         {/* Meta Pixel (Dual-Pixel: Primary & Secondary / Backup) */}
         <Script id="meta-pixel" strategy="afterInteractive">
           {`

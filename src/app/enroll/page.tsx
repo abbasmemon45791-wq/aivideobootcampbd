@@ -152,31 +152,31 @@ function Step1({ onDone }: { onDone: (leadId: string, data: { name: string; emai
   return (
     <form onSubmit={submit} className="space-y-1">
       <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700">
-        <User className="h-3.5 w-3.5" /> Step 1 of 3
+        <User className="h-3.5 w-3.5" /> Step 1 of 3 · আপনার তথ্য
       </div>
       <h2 className="mt-2 font-['Sora'] text-2xl font-extrabold leading-tight sm:text-3xl"
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         Reserve Your Seat.
       </h2>
-      <p className="text-sm font-semibold text-blue-600">Enroll before price increases to ৳{Math.round(COURSE_PRICE * 2.5).toLocaleString()}</p>
+      <p className="text-xs sm:text-sm font-semibold text-blue-600">কোর্সের অফার ফি মাত্র ৳{COURSE_PRICE.toLocaleString()} (রেগুলার ৳{Math.round(COURSE_PRICE * 2.5).toLocaleString()})</p>
 
       <div className="mt-4 space-y-3">
         <label className="block">
-          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">Full Name *</span>
+          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">Full Name (পূর্ণ নাম) *</span>
           <input type="text" value={name} onChange={e => setName(e.target.value)} maxLength={100}
             placeholder="e.g. Tanvir Ahmed" required
             className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
         </label>
 
         <label className="block">
-          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">Email *</span>
+          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">Email Address (ইমেইল) *</span>
           <input type="email" value={email} onChange={e => setEmail(e.target.value)} maxLength={255}
             placeholder="you@example.com" required
             className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
         </label>
 
         <label className="block">
-          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">WhatsApp Number *</span>
+          <span className="mb-1 block text-[11px] font-semibold uppercase tracking-wider text-slate-500">WhatsApp Number (হোয়াটসঅ্যাপ নম্বর) *</span>
           <input type="tel" value={wa} onChange={e => setWa(e.target.value)} maxLength={20}
             placeholder="01XXXXXXXXX" required
             className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2.5 text-sm text-slate-800 outline-none transition focus:border-blue-500 focus:ring-2 focus:ring-blue-100" />
@@ -194,11 +194,11 @@ function Step1({ onDone }: { onDone: (leadId: string, data: { name: string; emai
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>
         {loading
           ? <><LoaderCircle className="h-4 w-4 animate-spin" /> Saving…</>
-          : <>Continue to Payment <ArrowRight className="h-5 w-5" /></>}
+          : <>Continue to Payment (পেমেন্ট করুন) <ArrowRight className="h-5 w-5" /></>}
       </button>
 
       <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-400">
-        <Lock className="h-3.5 w-3.5" /> Your details are private — used only to deliver course access.
+        <Lock className="h-3.5 w-3.5" /> আপনার তথ্য সম্পূর্ণ সুরক্ষিত — শুধুমাত্র কোর্স অ্যাক্সেস দিতে ব্যবহার হবে।
       </p>
     </form>
   )
@@ -238,15 +238,15 @@ function Step2({
   return (
     <div>
       <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700">
-        <Wallet className="h-3.5 w-3.5" /> Step 2 of 3
+        <Wallet className="h-3.5 w-3.5" /> Step 2 of 3 · পেমেন্ট মাধ্যম
       </div>
       <h2 className="mt-3 font-['Sora'] text-2xl font-extrabold leading-tight sm:text-3xl"
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         Send Your Payment.
       </h2>
-      <p className="mt-2 flex items-center gap-1.5 text-sm text-slate-500">
-        <Lock className="h-3.5 w-3.5 text-blue-600" />
-        Send <strong className="text-slate-800 mx-1">exactly ৳{COURSE_PRICE.toLocaleString()}</strong> to the bKash Personal account below.
+      <p className="mt-2 flex items-center gap-1.5 text-xs sm:text-sm text-slate-600">
+        <Lock className="h-3.5 w-3.5 text-blue-600 shrink-0" />
+        নিচের বিকাশ নম্বরে <strong className="text-slate-900 mx-1">ঠিক ৳{COURSE_PRICE.toLocaleString()}</strong> &apos;Send Money&apos; করুন।
       </p>
 
       {/* Social Proof & Rating */}
@@ -260,7 +260,7 @@ function Step2({
             <Star className="h-3.5 w-3.5 fill-amber-400" />
           </div>
           <span className="font-bold text-slate-900">4.9/5</span>
-          <span className="text-slate-500">(1,120+ Students Enrolled)</span>
+          <span className="text-slate-600">(১,১০০+ স্টুডেন্ট এনরোলড)</span>
         </div>
       </div>
 
@@ -272,7 +272,7 @@ function Step2({
       <button onClick={onContinue}
         className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full px-6 py-3.5 text-base font-semibold text-white shadow-[0_0_20px_rgba(37,99,235,0.3)] transition-transform hover:scale-[1.02] cursor-pointer"
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>
-        I&apos;ve Sent Payment — Continue to Upload Proof <ArrowRight className="h-5 w-5" />
+        পেমেন্ট করেছি — স্ক্রিনশট দিন <ArrowRight className="h-5 w-5" />
       </button>
 
       {/* Direct WhatsApp Support */}
@@ -282,9 +282,9 @@ function Step2({
             <MessageCircle className="h-5 w-5" />
           </div>
           <div className="flex-1">
-            <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-900">Having trouble paying or need assistance?</h4>
+            <h4 className="text-xs font-bold uppercase tracking-wider text-emerald-900">পেমেন্ট করতে সমস্যা হচ্ছে বা সহায়তা প্রয়োজন?</h4>
             <p className="mt-0.5 text-xs text-slate-600">
-              Our team is online right now to guide you step-by-step on WhatsApp.
+              আমাদের টিম WhatsApp-এ লাইভ আছে — যেকোনো প্রশ্ন বা সমস্যায় সরাসরি মেসেজ দিন।
             </p>
             <a
               href={`https://wa.me/${WHATSAPP_SUPPORT}?text=${encodeURIComponent("Hi! I am on Step 2 (Payment) for the AI Bootcamp in Bangladesh and I need help completing my bKash payment.")}`}
@@ -300,10 +300,10 @@ function Step2({
 
       <button onClick={onBack}
         className="mt-3 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-slate-200 py-2.5 text-xs font-medium text-slate-500 hover:bg-slate-50 cursor-pointer">
-        <ArrowLeft className="h-3.5 w-3.5" /> Back
+        <ArrowLeft className="h-3.5 w-3.5" /> Back (আগের ধাপ)
       </button>
       <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-400">
-        <Lock className="h-3.5 w-3.5" /> Secure · One-time payment · Lifetime access
+        <Lock className="h-3.5 w-3.5" /> ১০০% সিকিউর · এককালীন পেমেন্ট · লাইফটাইম অ্যাক্সেস
       </p>
     </div>
   )
@@ -423,16 +423,16 @@ function Step3({
         </div>
         <h2 className="mt-4 font-['Sora'] text-2xl font-extrabold"
           style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-          You&apos;re In!
+          You&apos;re In! (অভিনন্দন)
         </h2>
         <p className="mt-3 text-sm text-slate-800 font-semibold leading-relaxed max-w-sm mx-auto">
-          Payment screenshot verified! Message us on WhatsApp now — we&apos;ll send you the student access details right away.
+          পেমেন্ট সফলভাবে ভেরিফাই হয়েছে! এখনই নিচের WhatsApp বাটনে মেসেজ দিন — আমরা সাথে সাথে আপনাকে LMS ও Skool কমিউনিটি অ্যাক্সেস লিংক পাঠিয়ে দেব।
         </p>
         <a href={`https://wa.me/${WHATSAPP_SUPPORT}?text=${encodeURIComponent(`Hi! I've submitted my bKash payment for the AI Bootcamp Bangladesh. My name is [Your Name]. Please confirm my enrollment.`)}`}
           target="_blank" rel="noopener noreferrer"
           className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-4 text-base font-semibold text-white shadow-lg transition-transform hover:scale-[1.02]">
           <MessageCircle className="h-5 w-5" />
-          Message us on WhatsApp
+          Message us on WhatsApp (অ্যাক্সেস নিন)
         </a>
       </div>
     )
@@ -441,14 +441,14 @@ function Step3({
   return (
     <div>
       <div className="inline-flex items-center gap-2 rounded-full border border-blue-200 bg-blue-50 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-blue-700">
-        <Upload className="h-3.5 w-3.5" /> Step 3 of 3
+        <Upload className="h-3.5 w-3.5" /> Step 3 of 3 · স্ক্রিনশট দিন
       </div>
       <h2 className="mt-3 font-['Sora'] text-2xl font-extrabold leading-tight sm:text-3xl"
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
         Upload Payment Screenshot.
       </h2>
-      <p className="mt-2 text-sm text-slate-500">
-        Upload a clear screenshot of your ৳{COURSE_PRICE.toLocaleString()} bKash receipt. Image only, max 5MB.
+      <p className="mt-2 text-xs sm:text-sm text-slate-600">
+        আপনার ৳{COURSE_PRICE.toLocaleString()} বিকাশ পেমেন্ট ট্রানজ্যাকশনের একটি স্পষ্ট স্ক্রিনশট আপলোড করুন।
       </p>
 
       {/* Drop zone */}
@@ -457,8 +457,8 @@ function Step3({
           ? <img src={preview} alt="Preview" className="max-h-48 rounded-lg object-contain" />
           : <>
               <ImageIcon className="h-8 w-8 text-slate-300" />
-              <div className="text-sm font-medium text-slate-600">Tap to choose screenshot</div>
-              <div className="text-xs text-slate-400">PNG or JPG · up to 5MB</div>
+              <div className="text-sm font-medium text-slate-600">স্ক্রিনশট সিলেক্ট করতে ট্যাপ করুন</div>
+              <div className="text-xs text-slate-400">PNG বা JPG · সর্বোচ্চ 5MB</div>
             </>}
         <input type="file" accept="image/*" className="hidden" onChange={e => handleFile(e.target.files?.[0])} />
       </label>
@@ -490,7 +490,7 @@ function Step3({
             target="_blank" rel="noopener noreferrer"
             className="mt-2 flex items-center gap-1.5 font-semibold text-emerald-600 hover:underline">
             <MessageCircle className="h-3.5 w-3.5" />
-            Screenshot issue? Get verified manually on WhatsApp
+            সমস্যা হচ্ছে? WhatsApp-এ ম্যানুয়ালি ভেরিফাই করুন
           </a>
         </div>
       )}
@@ -500,7 +500,7 @@ function Step3({
         style={{ background: 'linear-gradient(135deg,#2563eb,#06b6d4)' }}>
         {submitting
           ? <><LoaderCircle className="h-4 w-4 animate-spin" /> Uploading…</>
-          : <><Upload className="h-4 w-4" /> Submit Payment Proof</>}
+          : <><Upload className="h-4 w-4" /> Submit Payment Proof (জমা দিন)</>}
       </button>
 
       <a
@@ -514,11 +514,11 @@ function Step3({
 
       <button onClick={onBack}
         className="mt-2.5 inline-flex w-full items-center justify-center gap-1.5 rounded-full border border-slate-200 py-2.5 text-xs font-medium text-slate-500 hover:bg-slate-50 cursor-pointer">
-        <ArrowLeft className="h-3.5 w-3.5" /> Back
+        <ArrowLeft className="h-3.5 w-3.5" /> Back (আগের ধাপ)
       </button>
 
       <p className="mt-3 flex items-center justify-center gap-1.5 text-xs text-slate-400">
-        <Shield className="h-3.5 w-3.5" /> Your receipt is encrypted and stored securely.
+        <Shield className="h-3.5 w-3.5" /> আপনার রিসিপ্ট এনক্রিপ্টেড এবং সম্পূর্ণ সুরক্ষিত।
       </p>
     </div>
   )
