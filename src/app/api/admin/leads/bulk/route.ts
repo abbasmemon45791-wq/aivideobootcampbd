@@ -40,21 +40,22 @@ export async function POST(req: NextRequest) {
       
       if (error) throw error
     } else {
-      const updateData: any = { status: action === 'approve' ? 'approved' : 'rejected' }
-      const { error } = await supabaseAdmin
-        .from('leads')
-        .update(updateData)
-        .in('id', leadIds)
-
-      if (error) throw error
-
       if (action === 'approve') {
         const { data: leadsToApprove } = await supabaseAdmin
           .from('leads')
           .select('*, payments(id, amount)')
           .in('id', leadIds)
+          .neq('status', 'approved')
 
-        if (leadsToApprove) {
+        const updateData: any = { status: 'approved' }
+        const { error } = await supabaseAdmin
+          .from('leads')
+          .update(updateData)
+          .in('id', leadIds)
+
+        if (error) throw error
+
+        if (leadsToApprove && leadsToApprove.length > 0) {
           for (const l of leadsToApprove) {
             const existingPayment = (l.payments as any)?.[0]
             const coursePrice = existingPayment?.amount ? Number(existingPayment.amount) : ((process.env.COURSE_PRICE && process.env.COURSE_PRICE !== '1499') ? Number(process.env.COURSE_PRICE) : 799)
@@ -80,55 +81,16 @@ export async function POST(req: NextRequest) {
                   ai_verified: false
                 })
             }
-
-            // ── Conversion events for each approved lead ──
-            const transactionId = `lead_${l.id}_${Date.now()}`
-
-            // Meta CAPI (Dual-Pixel supported)
-            try {
-              const pixelConfigs = [
-                { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },
-                { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID_2, accessToken: process.env.META_ACCESS_TOKEN_2 || process.env.META_ACCESS_TOKEN },
-              ].filter((p): p is { pixelId: string; accessToken: string } => Boolean(p.pixelId && p.accessToken))
-
-              if (pixelConfigs.length > 0 && l.email) {
-                const hashedEmail = hashData(l.email.toLowerCase().trim())
-                const digitsOnly  = l.whatsapp?.replace(/\D/g, '')
-                const hashedPhone = digitsOnly ? hashData(digitsOnly) : undefined
-
-                for (const { pixelId, accessToken } of pixelConfigs) {
-                  await fetch(
-                    `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`,
-                    {
-                      method: 'POST',
-                      headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        data: [{
-                          event_name:        'Purchase',
-                          event_time:        Math.floor(Date.now() / 1000),
-                          action_source:     'other',
-                          event_source_url:  `${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/enroll`,
-                          event_id:          transactionId,
-                          user_data: {
-                            em: [hashedEmail],
-                            ...(hashedPhone && { ph: [hashedPhone] }),
-                          },
-                          custom_data: {
-                            currency: 'BDT',
-                            value:    coursePrice,
-                          },
-                        }],
-                      }),
-                    }
-                  ).catch(err => console.error(`[Bulk Approve] FB CAPI error for pixel ${pixelId}:`, err))
-                }
-              }
-            } catch (fbErr) {
-              console.error('[Bulk Approve] FB CAPI error:', fbErr)
-            }
           }
         }
       } else if (action === 'reject') {
+        const { error: leadErr } = await supabaseAdmin
+          .from('leads')
+          .update({ status: 'rejected' })
+          .in('id', leadIds)
+
+        if (leadErr) throw leadErr
+
         const { error: paymentError } = await supabaseAdmin
           .from('payments')
           .update({
@@ -138,6 +100,7 @@ export async function POST(req: NextRequest) {
             approved_by: 'admin_bulk'
           })
           .in('lead_id', leadIds)
+
         if (paymentError) throw paymentError
       }
     }

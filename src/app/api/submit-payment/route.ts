@@ -92,7 +92,7 @@ export async function POST(req: NextRequest) {
       .update({ status: 'payment_submitted' })
       .eq('id', leadId)
 
-    // Send Facebook CAPI Purchase Event (Dual-Pixel supported)
+    // Send Facebook CAPI Purchase Event (Dual-Pixel supported, deduplicated with browser fbq via eventId)
     try {
       const pixelConfigs = [
         { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },

@@ -99,6 +99,8 @@ export async function POST(req: NextRequest) {
     .eq('id', leadId)
     .maybeSingle()
 
+  const wasAlreadyApproved = lead?.status === 'approved'
+
   // Update lead status
   await supabaseAdmin
     .from('leads')
@@ -149,53 +151,8 @@ export async function POST(req: NextRequest) {
       })
   }
 
-  // ── Fire conversion events only on APPROVE ────────────────────────────────
-  if (action === 'approve' && lead) {
-    const transactionId = `lead_${leadId}_${Date.now()}`
-
-    // ── Facebook CAPI Purchase (server-side, Dual-Pixel supported) ──────
-    try {
-      const pixelConfigs = [
-        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID, accessToken: process.env.META_ACCESS_TOKEN },
-        { pixelId: process.env.NEXT_PUBLIC_FB_PIXEL_ID_2, accessToken: process.env.META_ACCESS_TOKEN_2 || process.env.META_ACCESS_TOKEN },
-      ].filter((p): p is { pixelId: string; accessToken: string } => Boolean(p.pixelId && p.accessToken))
-
-      if (pixelConfigs.length > 0 && lead.email) {
-        const hashedEmail = hashData(lead.email.toLowerCase().trim())
-        const digitsOnly  = lead.whatsapp?.replace(/\D/g, '')
-        const hashedPhone = digitsOnly ? hashData(digitsOnly) : undefined
-
-        for (const { pixelId, accessToken } of pixelConfigs) {
-          await fetch(
-            `https://graph.facebook.com/v19.0/${pixelId}/events?access_token=${accessToken}`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                data: [{
-                  event_name:        'Purchase',
-                  event_time:        Math.floor(Date.now() / 1000),
-                  action_source:     'other',  // 'other' = offline/server-side (not from browser)
-                  event_source_url:  `${process.env.NEXT_PUBLIC_SITE_URL ?? ''}/enroll`,
-                  event_id:          transactionId,
-                  user_data: {
-                    em: [hashedEmail],
-                    ...(hashedPhone && { ph: [hashedPhone] }),
-                  },
-                  custom_data: {
-                    currency: 'BDT',
-                    value:    coursePrice,
-                  },
-                }],
-              }),
-            }
-          ).catch(err => console.error(`[Admin Approve] FB CAPI error for pixel ${pixelId}:`, err))
-        }
-      }
-    } catch (fbErr) {
-      console.error('[Admin Approve] FB CAPI error:', fbErr)
-    }
-  }
+  // Note: Purchase event is fired when the user uploads payment proof on Step 3.
+  // No conversion event is fired here to avoid duplicate purchase reporting.
 
   return NextResponse.json({ success: true, status: newLeadStatus })
 }
