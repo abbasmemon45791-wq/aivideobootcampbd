@@ -35,7 +35,9 @@ function gtagSafe(
                    `+${normPhone}`
       ;(window as any).gtag('set', 'user_data', { email: userData.email, phone_number: e164 })
     }
-    ;(window as any).gtag('event', 'conversion', params)
+    if (params.send_to && !String(params.send_to).includes('undefined')) {
+      ;(window as any).gtag('event', 'conversion', params)
+    }
   }
   if (typeof window !== 'undefined' && (window as any).gtag) {
     fire()
