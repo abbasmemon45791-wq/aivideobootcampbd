@@ -133,6 +133,12 @@ function Step1({ onDone }: { onDone: (leadId: string, data: { name: string; emai
         if (typeof window !== 'undefined' && (window as any).fbq) {
           (window as any).fbq('track', 'Lead', {}, { eventID: leadEventId });
         }
+        if (typeof window !== 'undefined' && (window as any).gtag) {
+          (window as any).gtag('event', 'generate_lead', {
+            value: COURSE_PRICE,
+            currency: 'BDT'
+          });
+        }
 
         gtagSafe(
           {
@@ -390,6 +396,7 @@ function Step3({
           senderName: (verifyResult as Record<string,unknown>)?.senderName,
           direction: (verifyResult as Record<string,unknown>)?.direction,
           eventId: purchaseEventId,
+          gaClientId: getGAClientId(),
         }),
       })
       const data = await res.json()
@@ -397,6 +404,19 @@ function Step3({
 
       if (typeof window !== 'undefined' && (window as any).fbq) {
         (window as any).fbq('track', 'Purchase', { value: COURSE_PRICE, currency: 'BDT' }, { eventID: purchaseEventId });
+      }
+      if (typeof window !== 'undefined' && (window as any).gtag) {
+        (window as any).gtag('event', 'purchase', {
+          transaction_id: (verifyResult as Record<string,unknown>)?.transactionId || purchaseEventId,
+          value: COURSE_PRICE,
+          currency: 'BDT',
+          items: [{
+            item_id: 'ai-video-bootcamp-bd',
+            item_name: 'AI Video Bootcamp Bangladesh',
+            price: COURSE_PRICE,
+            quantity: 1
+          }]
+        });
       }
 
       gtagSafe(
