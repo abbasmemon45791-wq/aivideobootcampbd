@@ -365,7 +365,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
 
   const load = useCallback(async (isSilent = false) => {
     if (!isSilent) setLoading(true)
-    const params = new URLSearchParams({ page: String(page) })
+    const params = new URLSearchParams({ page: String(page), site: 'techpulse-bd' })
     if (filter) params.set('status', filter)
     if (selectedSource && selectedSource !== 'all') params.set('source', selectedSource)
     if (search) params.set('search', search)
@@ -381,7 +381,7 @@ function Dashboard({ token, onLogout }: { token: string; onLogout: () => void })
       setTotal(data.total ?? 0)
 
       // Load Funnel Stats
-      const funnelParams = new URLSearchParams()
+      const funnelParams = new URLSearchParams({ site: 'techpulse-bd' })
       if (selectedSource && selectedSource !== 'all') funnelParams.set('source', selectedSource)
       if (startDate) funnelParams.set('startDate', startDate)
       if (endDate) funnelParams.set('endDate', endDate)

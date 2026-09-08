@@ -1,10 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createClient } from '@supabase/supabase-js'
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!
-
-const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey)
+import { supabaseAdmin } from '@/lib/supabase'
 
 export async function GET(req: NextRequest) {
   const token = req.headers.get('x-admin-token')
@@ -16,7 +11,7 @@ export async function GET(req: NextRequest) {
     .select('*')
     .eq('token', token)
     .gt('expires_at', new Date().toISOString())
-    .single()
+    .maybeSingle()
 
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
 
@@ -25,7 +20,7 @@ export async function GET(req: NextRequest) {
     const startDate = searchParams.get('startDate')
     const endDate = searchParams.get('endDate')
     const source = searchParams.get('source')
-    const site = searchParams.get('site')
+    const site = searchParams.get('site') || 'techpulse-bd'
 
     let query = supabaseAdmin
       .from('leads')
@@ -56,21 +51,20 @@ export async function GET(req: NextRequest) {
     if (error) throw error
 
     // Calculate funnel metrics
-    const registered = leads.length
-    const paymentSubmitted = leads.filter(l => ['payment_submitted', 'approved', 'rejected'].includes(l.status)).length
-    const approvedLeads = leads.filter(l => l.status === 'approved')
+    const registered = (leads || []).length
+    const paymentSubmitted = (leads || []).filter(l => ['payment_submitted', 'approved', 'rejected'].includes(l.status)).length
+    const approvedLeads = (leads || []).filter(l => l.status === 'approved')
     const approved = approvedLeads.length
-    const rejected = leads.filter(l => l.status === 'rejected').length
-    const submitted = leads.filter(l => l.status === 'payment_submitted').length
+    const rejected = (leads || []).filter(l => l.status === 'rejected').length
+    const submitted = (leads || []).filter(l => l.status === 'payment_submitted').length
 
-    // Dynamic total revenue: sum exact amount recorded on approved payments
+    // Dynamic total revenue
     let totalRevenue = 0
     approvedLeads.forEach(l => {
       const p = l.payments?.[0]
       if (p?.amount && Number(p.amount) > 0) {
         totalRevenue += Number(p.amount)
       } else {
-        // Fallback if payment record had no custom amount
         totalRevenue += (process.env.COURSE_PRICE && process.env.COURSE_PRICE !== '1499' ? Number(process.env.COURSE_PRICE) : 799)
       }
     })

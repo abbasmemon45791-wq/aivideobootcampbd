@@ -31,7 +31,7 @@ export async function GET(req: NextRequest) {
   const url = new URL(req.url)
   const status    = url.searchParams.get('status')
   const source    = url.searchParams.get('source')
-  const site      = url.searchParams.get('site')
+  const site      = url.searchParams.get('site') || 'techpulse-bd'
   const search    = url.searchParams.get('search')
   const startDate = url.searchParams.get('startDate')
   const endDate   = url.searchParams.get('endDate')

@@ -4,9 +4,14 @@ import { createClient, SupabaseClient } from '@supabase/supabase-js'
 let _supabase: SupabaseClient | null = null
 let _supabaseAdmin: SupabaseClient | null = null
 
+const PROD_SUPABASE_URL = 'https://gowyjknjqgyfwkgacmks.supabase.co'
+
 function getClient() {
   if (!_supabase) {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    let url = process.env.NEXT_PUBLIC_SUPABASE_URL || PROD_SUPABASE_URL
+    if (url.includes('beqanhxhgucehxcrmdgq')) {
+      url = PROD_SUPABASE_URL
+    }
     const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
     if (!url || !key) throw new Error('Supabase public env vars not set. Add NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY to .env.local')
     _supabase = createClient(url, key)
@@ -16,7 +21,10 @@ function getClient() {
 
 function getAdminClient() {
   if (!_supabaseAdmin) {
-    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    let url = process.env.NEXT_PUBLIC_SUPABASE_URL || PROD_SUPABASE_URL
+    if (url.includes('beqanhxhgucehxcrmdgq')) {
+      url = PROD_SUPABASE_URL
+    }
     const key = process.env.SUPABASE_SERVICE_ROLE_KEY
     if (!url || !key) throw new Error('Supabase service role env vars not set. Add SUPABASE_SERVICE_ROLE_KEY to .env.local')
     _supabaseAdmin = createClient(url, key, {
