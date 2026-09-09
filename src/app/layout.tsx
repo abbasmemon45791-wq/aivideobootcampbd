@@ -21,6 +21,12 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  // Guard against accidental Pakistan tag bleed-through (G-Y2SZLNREPD)
+  const ga4Id =
+    process.env.NEXT_PUBLIC_GA4_ID && process.env.NEXT_PUBLIC_GA4_ID !== 'G-Y2SZLNREPD'
+      ? process.env.NEXT_PUBLIC_GA4_ID
+      : 'G-ZGRD9GQF40'
+
   return (
     <html lang="bn" className={`${inter.variable} ${sora.variable} ${jakarta.variable} ${hind.variable}`}>
       <body className="font-[var(--font-hind),Inter,sans-serif] antialiased">
@@ -41,10 +47,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           `}
         </Script>
 
-        
         {/* Google Analytics 4 (GA4) */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZGRD9GQF40"
+          src={`https://www.googletagmanager.com/gtag/js?id=${ga4Id}`}
           strategy="afterInteractive"
         />
         <Script id="ga4-init" strategy="afterInteractive">
@@ -52,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GA4_ID || 'G-ZGRD9GQF40'}', {
+            gtag('config', '${ga4Id}', {
               send_page_view: true
             });
           `}

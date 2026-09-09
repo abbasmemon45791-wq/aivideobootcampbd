@@ -148,7 +148,10 @@ export async function POST(req: NextRequest) {
 
     // Send GA4 Measurement Protocol Purchase Event (Fail-safe server tracking)
     try {
-      const ga4MeasurementId = process.env.NEXT_PUBLIC_GA4_ID || 'G-ZGRD9GQF40'
+      const ga4MeasurementId =
+        process.env.NEXT_PUBLIC_GA4_ID && process.env.NEXT_PUBLIC_GA4_ID !== 'G-Y2SZLNREPD'
+          ? process.env.NEXT_PUBLIC_GA4_ID
+          : 'G-ZGRD9GQF40'
       const ga4ApiSecret = process.env.GA4_API_SECRET || 'BjRjRAuDRMKLe5CWhFAF_g'
       if (ga4MeasurementId && ga4ApiSecret) {
         const cid = gaClientId || (lead.email ? hashData(lead.email).substring(0, 16) : 'anonymous_client')
